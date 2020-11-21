@@ -80,7 +80,32 @@
                          @"title":@"铅笔",
                          @"bigIcon":@"qb-big",
                          @"index":@13,
-                         @"voice":[[NSBundle bundleWithPath:path]pathForResource:@"铅笔" ofType:@"mp3"]}];
+                         @"voice":[[NSBundle bundleWithPath:path]pathForResource:@"铅笔" ofType:@"mp3"]},
+                       @{@"icon":@"huo-small",
+                         @"title":@"户外篝火",
+                         @"bigIcon":@"huo-big",
+                         @"index":@14,
+                         @"voice":[[NSBundle bundleWithPath:path]pathForResource:@"户外篝火" ofType:@"mp3"]},
+                      @{@"icon":@"beach-small",
+                        @"title":@"夜晚海滩",
+                        @"bigIcon":@"beach-big",
+                        @"index":@15,
+                        @"voice":[[NSBundle bundleWithPath:path]pathForResource:@"夜晚海滩" ofType:@"mp3"]},
+                      @{@"icon":@"ship-small",
+                        @"title":@"江上渔船",
+                        @"bigIcon":@"ship-big",
+                        @"index":@16,
+                        @"voice":[[NSBundle bundleWithPath:path]pathForResource:@"江上渔船" ofType:@"mp3"]},
+                      @{@"icon":@"bird-small",
+                        @"title":@"篱笆上的叶莺",
+                        @"bigIcon":@"bird-big",
+                        @"index":@17,
+                        @"voice":[[NSBundle bundleWithPath:path]pathForResource:@"篱笆上的叶莺" ofType:@"mp3"]},
+                     @{@"icon":@"xk-small",
+                       @"title":@"星空",
+                       @"bigIcon":@"xk-big",
+                       @"index":@18,
+                       @"voice":[[NSBundle bundleWithPath:path]pathForResource:@"星空" ofType:@"mp3"]}];
 }
 
 +(NSArray *)getAllSecond
