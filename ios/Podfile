@@ -22,12 +22,3 @@ target 'SoundVelley' do
     flipper_post_install(installer)
   end
 end
-
-target 'SoundVelley-tvOS' do
-  # Pods for SoundVelley-tvOS
-
-  target 'SoundVelley-tvOSTests' do
-    inherit! :search_paths
-    # Pods for testing
-  end
-end
