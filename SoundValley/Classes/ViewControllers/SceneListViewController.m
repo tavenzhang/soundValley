@@ -70,7 +70,7 @@
         UICollectionViewFlowLayout *layout = [[UICollectionViewFlowLayout alloc]init];
         layout.minimumLineSpacing = 10.0;
         layout.minimumInteritemSpacing = 0;
-        layout.sectionInset = UIEdgeInsetsMake(0, 30.0, 0, 30.0);
+        layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
         _collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:layout];
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
@@ -92,14 +92,17 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    return CGSizeMake( (SCREEN_WIDTH - 90)/2, 150);
+    CGFloat dim =(SCREEN_WIDTH-80*3)/4;
+   // return CGSizeMake((SCREEN_WIDTH-2*dim)/3, 150);
+   return CGSizeMake(118, 140);
+  
 }
 
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     SceneListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SceneListCollectionViewCell" forIndexPath:indexPath];
-    NSDictionary *dic = self.dataArray[indexPath.row];
+    NSDictionary *dic = self.dataArray[ self.dataArray.count-1-indexPath.row];
     cell.iconImageView.image = [UIImage imageNamed:dic[@"icon"]];
     cell.sceneTitleLabel.text = dic[@"title"];
     return cell;

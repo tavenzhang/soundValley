@@ -21,7 +21,10 @@
 -(UIImageView *)iconImageView
 {
     if (!_iconImageView) {
-        _iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 10, (SCREEN_WIDTH - 90)/2, 100)];
+        CGFloat scale = [UIScreen mainScreen].scale ;
+        CGFloat dim =(SCREEN_WIDTH-80*3)/4;
+        CGFloat dimNew=(118-80)/2;
+        _iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(dimNew, 0,80, 80)];
         _iconImageView.contentMode = UIViewContentModeScaleAspectFill;
         _iconImageView.layer.masksToBounds = YES;
         _iconImageView.layer.cornerRadius = 20;
@@ -32,7 +35,7 @@
 -(UILabel *)sceneTitleLabel
 {
     if (!_sceneTitleLabel) {
-        _sceneTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 120, (SCREEN_WIDTH - 90)/2, 30)];
+        _sceneTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 90, 118, 30)];
         _sceneTitleLabel.textAlignment = NSTextAlignmentCenter;
         _sceneTitleLabel.font = [UIFont systemFontOfSize:15];
         _sceneTitleLabel.textColor = RGB(139, 139, 139, 1);
