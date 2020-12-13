@@ -283,6 +283,10 @@ PODS:
     - React-Core
     - SDWebImage (~> 5.8)
     - SDWebImageWebPCoder (~> 0.6.1)
+  - RNGestureHandler (1.9.0):
+    - React-Core
+  - RNScreens (2.16.1):
+    - React-Core
   - RNStoreReview (0.1.5):
     - React
   - SDWebImage (5.9.4):
@@ -331,6 +335,8 @@ DEPENDENCIES:
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - RNDeviceInfo (from `../node_modules/react-native-device-info`)
   - RNFastImage (from `../node_modules/react-native-fast-image`)
+  - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
+  - RNScreens (from `../node_modules/react-native-screens`)
   - RNStoreReview (from `../node_modules/react-native-store-review/ios`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
@@ -413,6 +419,10 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-device-info"
   RNFastImage:
     :path: "../node_modules/react-native-fast-image"
+  RNGestureHandler:
+    :path: "../node_modules/react-native-gesture-handler"
+  RNScreens:
+    :path: "../node_modules/react-native-screens"
   RNStoreReview:
     :path: "../node_modules/react-native-store-review/ios"
   Yoga:
@@ -457,6 +467,8 @@ SPEC CHECKSUMS:
   ReactCommon: a0a1edbebcac5e91338371b72ffc66aa822792ce
   RNDeviceInfo: bdc3e922b2ed0f086e9d9ab534e61bc316f08576
   RNFastImage: d4870d58f5936111c56218dbd7fcfc18e65b58ff
+  RNGestureHandler: 9b7e605a741412e20e13c512738a31bd1611759b
+  RNScreens: 45c457af3d2ee9e08fc01e70da87e653d46b1198
   RNStoreReview: 62d6afd7c37db711a594bbffca6b0ea3a812b7a8
   SDWebImage: b69257f4ab14e9b6a2ef53e910fdf914d8f757c1
   SDWebImageWebPCoder: d0dac55073088d24b2ac1b191a71a8f8d0adac21

@@ -26,27 +26,54 @@ import NetUitls from '../common/net/TCRequestUitls';
 import {netConfig} from '../common/net/TCRequestConfig';
 import Swiper from 'react-native-swiper';
 import TNImage from '../common/component/TNImage';
+import {observer} from 'mobx-react';
+import {TNButtonImg} from '../common/component/TNButtonView';
+import {musicAsset} from './asset/images';
 
+@observer
 export default class Home extends Component {
+
+    // static navigationOptions = {
+    //     headerTitle: 'test661',
+    //
+    //     //headerStyle:{ backgroundColor: 'white', borderBottomWidth:0}
+    //     headerColor: '#ddd',
+    //     headerStyle:{ backgroundColor: 'transparent', borderBottomWidth:0,position: 'absolute',
+    //         top: 0,
+    //         left: 0},
+    //     headerBackTitleStyle: {
+    //         opacity: 0,
+    //     },
+    //     headerTintColor: '#fff'
+    //
+    // }
 
     constructor(pro) {
         super(pro);
         this.state = {
-            dataList: [],
+            musicList: [],
         };
     }
 
     componentWillMount() {
         NetUitls.getUrlAndParamsAndCallback(netConfig.api.musicJson.url, null, res => {
-            this.setState({dataList: res.content});
-            TN_Log('home----', res);
+            let listData=res.content;
+            let retList=[];
+            for (let data of listData){
+                let imgBig = `${netConfig.appDomain}/${data.name}/${data.name}-big.png`;
+                let imgSmall = `${netConfig.appDomain}/${data.name}/${data.name}-small.png`;
+                let voice=`${netConfig.appDomain}/${data.name}/${data.title}.mp3`;
+                retList.push({imgBig,imgSmall,voice,title:data.title,name:data.name})
+            }
+            this.setState({musicList: retList});
+            TN_Log('home----', retList);
         });
     }
 
     render() {
         let latMusicArr = [];
-        if (this.state.dataList.length > 0) {
-            latMusicArr = this.state.dataList.splice(0, 5);
+        if (this.state.musicList.length > 0) {
+            latMusicArr = this.state.musicList.slice(0, 5);
         }
 
         return (<View style={{backgroundColor: 'white', paddingBottom: 100, flex: 1}}>
@@ -54,7 +81,14 @@ export default class Home extends Component {
                 latMusicArr.length > 0 ? this.rendSwiperView(latMusicArr) : null
                 // this.rendGalleryView(latMusicArr)
             }
+            <View style={{flexDirection:"row", backgroundColor:"red", alignSelf:"center",justifyContent:"center",alignItems:"center", position: 'absolute',bottom:100}}>
+                <TNButtonImg imgSource={musicAsset.mainMusic} onClick={this.onMoreMusic}/>
+            </View>
         </View>);
+    }
+
+    onMoreMusic=()=>{
+        TN_NavHelp.pushView(TN_NavigateViews.SceneListView,{musicList:this.state.musicList});
     }
 
 
@@ -92,14 +126,13 @@ export default class Home extends Component {
         </Swiper>);
     };
 
-    addItemVIew(data) {
-        let imageUrl = `${netConfig.appDomain}/${data.name}/${data.name}-big.png`;
-        TN_Log('---addItemVIew---', imageUrl);
+    addItemVIew=(data)=> {
+        TN_Log('---addItemVIew---', data);
         return (<TouchableWithoutFeedback onPress={() => {
-            TN_NavHelp.pushView(TN_NavigateViews.MusicPlayView, {imageUrl: imageUrl, title: data.title});
+            TN_NavHelp.pushView(TN_NavigateViews.MusicPlayView, {music: data,musicList:this.state.musicList});
         }}><View style={styles.body}>
             <Text style={styles.text}>{data.title}</Text>
-            <TNImage source={{uri: imageUrl}} style={{height: 400}}/>
+            <TNImage source={{uri: data.imgBig}} style={{height: 400}}/>
         </View>
         </TouchableWithoutFeedback>);
     }

@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import Storage from './js/common/global/TCStorage';
 import G_Config from './js/common/global/G_Config';
-import {TNStackNavigator} from './js/common/navigator/NavigatorView';
+import {AppContainer, TNStackNavigator} from './js/common/navigator/NavigatorView';
 import NavigationService from './js/common/navigator/NavigationService';
 import rootStore from './js/model/store/RootStore';
 import SplashScreen from "react-native-splash-screen";
@@ -25,7 +25,7 @@ export default class App extends Component {
             <Provider  {...rootStore} >
                 <View style={{flex: 1, backgroundColor: 'black'}}>
                     {this.addStatusBar()}
-                        <TNStackNavigator
+                        <AppContainer
                             ref={navigatorRef => {
                                 NavigationService.setTopLevelNavigator(navigatorRef);
                                 this.navigator = navigatorRef;

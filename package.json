@@ -30,13 +30,19 @@
     "react-native-qrcode": "0.2.6",
     "react-native-root-toast": "^3.2.1",
     "react-native-safe-area-view": "^1.1.1",
+    "react-native-screens": "^2.16.1",
     "react-native-splash-screen": "3.0.6",
     "react-native-storage": "0.2.2",
     "react-native-store-review": "^0.1.5",
     "react-native-swiper": "^1.6.0",
     "react-native-video": "^5.1.0-alpha8",
-    "react-navigation": "4.4.3",
-    "react-navigation-props-mapper": "^1.0.4"
+    "react-navigation": "4.0.10",
+    "react-navigation-hooks": "1.0.3",
+    "react-navigation-props-mapper": "^1.0.4",
+    "react-navigation-stack": "1.9.3",
+    "react-navigation-tabs": "2.5.5",
+    "react-navigation-transitions": "1.0.12",
+    "react-static-container": "1.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.8.4",

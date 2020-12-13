@@ -73,7 +73,7 @@ function pop(n, params) {
 //function reset(rootRoute, displayRoute, params) {
 function reset(rootRoute, params) {
     _navigator.dispatch(
-        NavigationActions.reset({
+        NavigationActions.init({
             index: 0,
             actions: [
                 NavigationActions.navigate({routeName: rootRoute,params}),

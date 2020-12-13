@@ -1,10 +1,15 @@
-import {TabNavigator, StackNavigator} from 'react-navigation';
+
 import Home from '../../view/home';
 import MusicPlayView from '../../view/play/MusicPlayView';
-
+import {createStackNavigator} from 'react-navigation-stack';
+import {
+    createAppContainer
+} from 'react-navigation';
+import SceneListView from '../../view/scene';
 export const NavigateViews = {
     Home:viewRoutHelp(Home),
-    MusicPlayView:viewRoutHelp(MusicPlayView)
+    MusicPlayView:viewRoutHelp(MusicPlayView),
+    SceneListView:viewRoutHelp(SceneListView)
 }
 
 //用于增加通用navigator view 属性 特殊 处理
@@ -20,16 +25,21 @@ for (let key in NavigateViews) {
 }
 
 
-export const TNStackNavigator = StackNavigator({
+export const TNStackNavigator = createStackNavigator({
     ...NavigateViews
 }, {
-    navigationOptions: {
+    defaultNavigationOptions:{
         header: null,
-        swipeEnabled: false,
-        gesturesEnabled: false
-    }
+        swipeEnabled: true,
+        gesturesEnabled: true
+    },
+    // navigationOptions: {
+    //     header: null,
+    //     swipeEnabled: false,
+    //     gesturesEnabled: false
+    // }
 })
-
+export const AppContainer = createAppContainer(TNStackNavigator);
 
 
 
