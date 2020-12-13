@@ -2,7 +2,7 @@ import {NavigationActions} from 'react-navigation'
 
 let _navigator;
 
-function setTopLevelNavigator(navigatorRef) {
+export function setTopLevelNavigator(navigatorRef) {
     _navigator = navigatorRef;
 }
 let debounce = true; // 防止快速点击操作
@@ -15,7 +15,7 @@ let debounce = true; // 防止快速点击操作
 function navigate(routeName, params) {
    // TN_Log("_navigator-------",_navigator)
   if (debounce) {
-    debounce = false
+    debounce = false;
     _navigator.dispatch(
         NavigationActions.navigate({
           type: NavigationActions.NAVIGATE,
@@ -77,7 +77,7 @@ function reset(rootRoute, params) {
             index: 0,
             actions: [
                 NavigationActions.navigate({routeName: rootRoute,params}),
-               // NavigationActions.navigate({routeName: displayRoute, params})
+               // NavigationActions.navigator({routeName: displayRoute, params})
             ]
         })
     )

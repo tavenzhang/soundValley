@@ -1,10 +1,12 @@
 
-import rootStore from "../../Data/store/RootStore";
-import NavigatorHelper from "../JXHelper/TCNavigatorHelper";
+
+import NavigatorHelper from '../navigator/TNavigatorHelper';
+import {NavigateViews} from '../navigator/NavigatorView';
 import { Text } from 'react-native';
-import BackgroundTimer from 'react-native-background-timer';
+//import BackgroundTimer from 'react-native-background-timer';
+import rootStore from '../../model/store/RootStore';
 // 关闭应用中字体适应系统字体变化的效果
-Text.defaultProps = { ...Text.defaultProps, allowFontScaling: false};
+Text.defaultProps = {...Text.defaultProps, allowFontScaling: false};
 
 global.TN_Log = (string, str2) => {
     if (str2) {
@@ -12,9 +14,10 @@ global.TN_Log = (string, str2) => {
     } else if (__DEV__) console.log(string)
 }
 
-//整合全局 不变的使用 引用 常量 减少import的数量 ，以JX_ 开头
-global.TW_NavHelp = NavigatorHelper;
-global.TW_Store = rootStore;
+//整合全局 不变的使用 引用 常量 减少import的数量 ，以TN_ 开头
+global.TN_NavHelp = NavigatorHelper;
+global.TN_NavigateViews = NavigateViews;
+global.TN_Store = rootStore;
 
 const hasOwn = Object.prototype.hasOwnProperty;
 
@@ -50,7 +53,7 @@ global.TN_ShallowEqual= shallowEqual=(objA, objB)=> {
     return true
 }
 
-global.TN_BackGroudTimer=BackgroundTimer;
+//global.TN_BackGroudTimer=BackgroundTimer;
 
 global.TN_GetQueryString= (name, url="") =>{
     let myUrl=url;

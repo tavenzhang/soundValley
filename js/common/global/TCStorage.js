@@ -23,7 +23,7 @@ var storage = new Storage({
 // storage.load({
 //     key: 'TCDefaultDomain'
 // }).then(res => {
-//     TW_Store.appStore.currentDomain = res
+//     TN_Store.appStore.currentDomain = res
 // }).catch(err => {
 //     TN_Log(err)
 // });
@@ -41,6 +41,5 @@ global.TW_DATA_KEY={
 
 
 // 对于react native
-global.storage = storage;
 global.TW_Data_Store=AsyncStorage;
 module.exports = storage

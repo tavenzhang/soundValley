@@ -1,11 +1,10 @@
 import {TabNavigator, StackNavigator} from 'react-navigation';
-// import SubGameView from "./SubGameView";
-// import GameLogView from "./GameLogView";
-// import TWVerWebView from "../WebView/TWVerWebView";
-const NavigatViews= {
-    // SubGameView:viewRoutHelp(SubGameView),
-    // WebView: viewRoutHelp(TWWebGameView),
-    // TWThirdWebView:viewRoutHelp(TWVerWebView),
+import Home from '../../view/home';
+import MusicPlayView from '../../view/play/MusicPlayView';
+
+export const NavigateViews = {
+    Home:viewRoutHelp(Home),
+    MusicPlayView:viewRoutHelp(MusicPlayView)
 }
 
 //用于增加通用navigator view 属性 特殊 处理
@@ -14,18 +13,15 @@ function viewRoutHelp(component) {
 }
 
 //为所有组件增加增加routName 配合 JX_Compones  用于 通用 pushtoView 跳转 避免使用纯string
-for (let key in Components) {
-    if (NavigatViews[key]) {
-        NavigatViews[key].routName = key;
+for (let key in NavigateViews) {
+    if (NavigateViews[key]) {
+        NavigateViews[key].routName = key;
     }
 }
 
-global.JX_Compones = Components
 
-
-
-const MainStackNavigator = StackNavigator({
-    ...Components
+export const TNStackNavigator = StackNavigator({
+    ...NavigateViews
 }, {
     navigationOptions: {
         header: null,
@@ -34,8 +30,6 @@ const MainStackNavigator = StackNavigator({
     }
 })
 
-export default {
-    NavigatViews,
-}
+
 
 

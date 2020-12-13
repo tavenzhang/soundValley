@@ -10,10 +10,10 @@ import {
     platInfo,
     YunDunData,
     MyOwnerPlatName,
-} from "../../config/appConfig";
+} from "../../netConfig/appConfig";
 
-import { UpDateHeadAppId } from '../../Common/Network/TCRequestConfig';
-import NetUitls from '../../Common/Network/TCRequestUitls';
+import { UpDateHeadAppId } from '../../common/net/TCRequestConfig';
+import NetUitls from '../../common/net/TCRequestUitls';
 import TCUserOpenPayApp from '../../Data/TCUserOpenPayApp';
 import SharetraceModule from 'sharetrace-react-native'
 import JXHelper from "../../Common/JXHelper/JXHelper";
@@ -174,15 +174,15 @@ export default class AppInfoStore {
             TN_Log("TW_DATA_KEY.LobbyReadyOK==err-"+err+"--data==",gameData);
             if(gameData&&gameData.gameUrl&&gameData.gameUrl.indexOf("http")>-1){
                 this.appSaveData=gameData;
-                TW_Store.bblStore.enterGameLobby(gameData,true);
+                TN_Store.bblStore.enterGameLobby(gameData,true);
             }else{
                     let percent=1
-                    TN_MSG_TO_GAME(TW_Store.bblStore.getWebAction(TW_Store.bblStore.ACT_ENUM.loadingView, {data: "正在初始化数据 ",percent, color:platInfo.loadHintColor}));
+                    TN_MSG_TO_GAME(TN_Store.bblStore.getWebAction(TN_Store.bblStore.ACT_ENUM.loadingView, {data: "正在初始化数据 ",percent, color:platInfo.loadHintColor}));
                     this.timeClearId=setInterval(()=>{
                         //TN_Log("TN_MSG_TO_GAME---percent-"+percent)
                         percent+=1;
                         percent= percent>=100 ? 99:percent;
-                        TN_MSG_TO_GAME(TW_Store.bblStore.getWebAction(TW_Store.bblStore.ACT_ENUM.loadingView, {percent}));
+                        TN_MSG_TO_GAME(TN_Store.bblStore.getWebAction(TN_Store.bblStore.ACT_ENUM.loadingView, {percent}));
                     },500)
 
             }
@@ -229,7 +229,7 @@ export default class AppInfoStore {
                         }
                     });
                 } catch (e) {
-                    TW_Store.dataStore.log += "getInstall---error=" + e;
+                    TN_Store.dataStore.log += "getInstall---error=" + e;
                 }
             }
         });
@@ -239,12 +239,12 @@ export default class AppInfoStore {
         if(SharetraceModule&&SharetraceModule.getInstallTrace)
         {
             SharetraceModule.getInstallTrace( (res)=> {
-                //TW_Store.dataStore.log+="getInstall----"+JSON.stringify(res);
+                //TN_Store.dataStore.log+="getInstall----"+JSON.stringify(res);
                 TN_Log("onOpenInstallCheck----res"+res+"===typeof res.data=="+(typeof(res)), res)
 
-                // TW_Store.dataStore.log += "getInstall---res-" + res;
+                // TN_Store.dataStore.log += "getInstall---res-" + res;
                 if (res) {
-                    //TW_Store.dataStore.log+="getInstall----"+JSON.stringify(res);
+                    //TN_Store.dataStore.log+="getInstall----"+JSON.stringify(res);
                     let map = null;
                     if (typeof(res) == "object") {
                         map = res;
@@ -264,15 +264,15 @@ export default class AppInfoStore {
                             TW_Data_Store.setItem(TW_DATA_KEY.AFF_CODE, this.userAffCode);
                             this.onUpTimes=1;
                             this.intervalUpdate=setInterval(this.onUpdataAffcode,1500);
-                            if(TW_Store.bblStore.isEnterLooby){
+                            if(TN_Store.bblStore.isEnterLooby){
                                 TW_OnValueJSHome(
-                                    TW_Store.bblStore.getWebAction(
-                                        TW_Store.bblStore.ACT_ENUM.affcode,
+                                    TN_Store.bblStore.getWebAction(
+                                        TN_Store.bblStore.ACT_ENUM.affcode,
                                         { data: this.userAffCode }
                                     )
                                 );
                             }
-                            TW_Store.dataStore.log +=
+                            TN_Store.dataStore.log +=
                                 "\ngetInstall---affCode=TW_OnValueJSHome--userAffCode-" +
                                 this.userAffCode;
                         }
@@ -291,10 +291,10 @@ export default class AppInfoStore {
 
     onUpdataAffcode=()=>{
         this.onUpTimes+=1;
-        if(TW_Store.bblStore.isEnterLooby){
+        if(TN_Store.bblStore.isEnterLooby){
             TW_OnValueJSHome(
-                TW_Store.bblStore.getWebAction(
-                    TW_Store.bblStore.ACT_ENUM.affcode,
+                TN_Store.bblStore.getWebAction(
+                    TN_Store.bblStore.ACT_ENUM.affcode,
                     { data: this.userAffCode }
                 )
             );
@@ -311,7 +311,7 @@ export default class AppInfoStore {
             let isShowAlert = this.APP_DOWNLOAD_VERSION != this.latestNativeVersion;
             if (isShowAlert) {
                 TW_SplashScreen_HIDE();
-               TW_Store.gameUpateStore.isForeAppUpate=true;
+               TN_Store.gameUpateStore.isForeAppUpate=true;
                TN_JUMP_RN("");
                TN_Log("isShowAlert===="+isShowAlert)
                 //清除所有的缓存数据 方便app升级
@@ -415,7 +415,7 @@ export default class AppInfoStore {
         let emulatorChecking = isEmulator;
         // || (curDevId.indexOf("unknown") !== -1)
         // || (modeList.indexOf(curModel) !== -1);
-        TW_Store.dataStore.log += "\n---isEmulator--" + isEmulator + "---TW_IS_DEBIG---" + TW_IS_DEBIG + "---isSitApp---" + this.isSitApp +
+        TN_Store.dataStore.log += "\n---isEmulator--" + isEmulator + "---TW_IS_DEBIG---" + TW_IS_DEBIG + "---isSitApp---" + this.isSitApp +
             "---model--" + curModel + "--deviceID--" + curDevId + "--deviceName--" + curDevName + "\n---Emulator--" + emulatorChecking;
         if (emulatorChecking && !G_IS_IOS) {
             if (!this.isSitApp && !TW_IS_DEBIG&&this.clindId!="214") {
@@ -448,7 +448,7 @@ export default class AppInfoStore {
         switch (`${this.subAppType}`) {
             case '21':
                 this.isInAnroidHack = true;
-                TW_Store.hotFixStore.allowUpdate = false;
+                TN_Store.hotFixStore.allowUpdate = false;
                 //开始检测 热更新开关
                 this.initAndroidAppInfo(res => {
                     this.checkUpdate(initDomain);
@@ -456,18 +456,18 @@ export default class AppInfoStore {
                 break;
             case "22":
                 this.isInAnroidHack = true;
-                TW_Store.hotFixStore.allowUpdate = false;
+                TN_Store.hotFixStore.allowUpdate = false;
                 TW_Data_Store.getItem(TW_DATA_KEY.isSubType22, (err, ret) => {
                     TN_Log("checkAppSubType--initData---TW_DATA_KEY.isSubType22-ret==" + ret);
                     if (ret == "TRUE") {
                         this.isInAnroidHack = false;
-                        TW_Store.hotFixStore.allowUpdate = true;
+                        TN_Store.hotFixStore.allowUpdate = true;
                     }else{
                         //15分钟后强制开启更新 并热启动 测试的时候可以把时间缩短试试
                         setTimeout(()=>{
                             this.isInAnroidHack = false;
-                            TW_Store.hotFixStore.allowUpdate = true;
-                            TW_Store.hotFixStore.isNextAffect=false;
+                            TN_Store.hotFixStore.allowUpdate = true;
+                            TN_Store.hotFixStore.isNextAffect=false;
                             TW_Data_Store.setItem(TW_DATA_KEY.isSubType22, "TRUE", (err) => {
                                 TN_Log("checkAppSubType--initData--setItem---TW_DATA_KEY.isSubType22-err---", err)
                             });
@@ -527,7 +527,7 @@ export default class AppInfoStore {
                                 if (resCheck) {
                                     //允许更新
                                     this.isInAnroidHack = false;
-                                    TW_Store.hotFixStore.allowUpdate = true;
+                                    TN_Store.hotFixStore.allowUpdate = true;
                                 }
                                 initDomain();
                             }
@@ -592,7 +592,7 @@ export default class AppInfoStore {
             let nativeConfig = await CodePush.getConfiguration();
             this.appVersion = nativeConfig.appVersion;
             this.isOldIosAPP= G_IS_IOS&&(this.appVersion=="2.2.2");
-            TW_Store.dataStore.log += "\n---nativeConfig--" + JSON.stringify(nativeConfig) + "---\n";
+            TN_Store.dataStore.log += "\n---nativeConfig--" + JSON.stringify(nativeConfig) + "---\n";
             TN_Log(
                 "appInfo----version-nativeConfig--  this.appVersion " + this.appVersion,
                 nativeConfig
@@ -618,7 +618,7 @@ export default class AppInfoStore {
         if (this.deviceToken.length === 0) {
             this.deviceToken = await this.initDeviceUniqueID();
             //刷新游戏appNativeData 数据
-            //TW_OnValueJSHome(TW_Store.bblStore.getWebAction(TW_Store.bblStore.ACT_ENUM.appNativeData, { data: TW_Store.bblStore.getAppNativeData()}));
+            //TW_OnValueJSHome(TN_Store.bblStore.getWebAction(TN_Store.bblStore.ACT_ENUM.appNativeData, { data: TN_Store.bblStore.getAppNativeData()}));
             this.saveDeviceTokenToLocalStore();
         }
         //this.yunDunData.token = this.deviceToken;

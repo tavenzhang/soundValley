@@ -22,7 +22,7 @@ Helper.checkUserWhetherLogin = () => {
  * @param params
  */
 // Helper.pushToTopUp = (params) => {
-//     NavigationService.navigate("UserPayment", params);
+//     NavigationService.navigator("UserPayment", params);
 // }
 
 Helper.pushToTopUp = (route, params) => {
@@ -135,6 +135,4 @@ Helper.goBack = (routers, navigation) => {
 }
 
 
-
-module.exports = Helper
 

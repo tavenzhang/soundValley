@@ -1,5 +1,4 @@
 import { NativeModules } from 'react-native'
-import Orientation from 'react-native-orientation';
 try{
 
 }catch (e) {
@@ -151,7 +150,7 @@ global.TN_JUMP_RN=(data="")=>{
 global.TN_ISMute=(callBack=null)=>{
     if (NativeModules.JXHelper.checkIsMute) {
         NativeModules.JXHelper.checkIsMute((dataStr)=>{
-            TW_Store.bblStore.onCheckIosMute(dataStr);
+            TN_Store.bblStore.onCheckIosMute(dataStr);
             if(callBack){
                 callBack(dataStr)
             }
@@ -172,9 +171,9 @@ global.TN_SetCodePushConifg = (serverUrl,appVersion="2.2.2") => {
     JXCodePushServerUrl = serverUrl;
     //ios 强制固定设置 热更新的 appVersion
     if (G_IS_IOS) {
-        TW_Store.dataStore.log+="\nsetCodePushConfig---start--\n";
+        TN_Store.dataStore.log+="\nsetCodePushConfig---start--\n";
         if(NativeModules.JDHelper.setCodePushConfig){
-            TW_Store.dataStore.log+="\nsetCodePushConfig---appVersion--"+appVersion+"---\n";
+            TN_Store.dataStore.log+="\nsetCodePushConfig---appVersion--"+appVersion+"---\n";
             //NativeModules.JDHelper.setCodePushConfig(serverUrl,appVersion)
         }
     }
@@ -185,10 +184,10 @@ global.TN_SetCodePushConifg = (serverUrl,appVersion="2.2.2") => {
 global.TN_yunDunStart = (isLocalHost=false,callBack) => {
     // let yunDunStart = G_IS_IOS ? NativeModules.JDHelper.yunDunStart : NativeModules.JXHelper.yunDunStart
     //     try {
-    //         let appKey = G_IS_IOS ? TW_Store.appStore.yunDunData.appIosKey : TW_Store.appStore.yunDunData.appAndroidKey;
-    //         let groupName = TW_Store.appStore.yunDunData.groupname;
-    //         let ddomain = TW_Store.appStore.yunDunData.dip;
-    //         let token = TW_Store.appStore.deviceToken;
+    //         let appKey = G_IS_IOS ? TN_Store.appStore.yunDunData.appIosKey : TN_Store.appStore.yunDunData.appAndroidKey;
+    //         let groupName = TN_Store.appStore.yunDunData.groupname;
+    //         let ddomain = TN_Store.appStore.yunDunData.dip;
+    //         let token = TN_Store.appStore.deviceToken;
     //         let port = isLocalHost ? "80" : "443";
     //         yunDunStart(appKey, groupName, token, ddomain, port, function (result) {
     //             TN_Log("TN_yunDunStart-------------result=======" + result + "---srcDomain===-", {
@@ -201,7 +200,7 @@ global.TN_yunDunStart = (isLocalHost=false,callBack) => {
     //             if (result && result.length > 0) {
     //                 let dataPort = result.split("_")[1];
     //                 TN_Log("TN_yunDunStart--------lastDomian--dataPort-" + dataPort);
-    //                 TW_Store.appStore.yunDunPort = dataPort;
+    //                 TN_Store.appStore.yunDunPort = dataPort;
     //                 callBack(true, dataPort);
     //             } else {
     //                 callBack(true)

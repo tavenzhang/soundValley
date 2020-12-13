@@ -25,10 +25,10 @@ export default class FileTools {
                 //{statusCode: 404, headers: {…}, jobId: 1, contentLength: 153
                 TN_Log("FileTools---downloadFile=background--=", res);
                 if (res.statusCode != 404) {
-                    //TW_Store.commonBoxStore.isShow=true;
+                    //TN_Store.commonBoxStore.isShow=true;
                 } else {
                     Toast.showShortCenter("需要下载的游戏文件不存在");
-                    // TW_Store.commonBoxStore.isShow=false
+                    // TN_Store.commonBoxStore.isShow=false
                 }
                 // TN_Log("FileTools---progress==param=="+JSON.stringify(param))
 
@@ -36,8 +36,8 @@ export default class FileTools {
             progress: (res) => {
                 // this.log+="==>progress-="+res;
                 //let pro = res.bytesWritten / res.contentLength;
-                //  TW_Store.commonBoxStore.curPecent=res.bytesWritten;
-                //  TW_Store.commonBoxStore.totalPecent=res.contentLength;
+                //  TN_Store.commonBoxStore.curPecent=res.bytesWritten;
+                //  TN_Store.commonBoxStore.totalPecent=res.contentLength;
                 // TN_Log("FileTools---progress==new==",res);
 
                 if (onProgress) {
@@ -64,12 +64,12 @@ export default class FileTools {
 
                 // this.log+="==>downloadFile--promise="+JSON.stringify(res)+"---state--"+res.statusCode;
                 if (`${res.statusCode}` != "404") {
-                    FileTools.unzipFile(downloadDest, TW_Store.bblStore.storeDir, onSucFuc, param);
+                    FileTools.unzipFile(downloadDest, TN_Store.bblStore.storeDir, onSucFuc, param);
                 } else {
                     this.log += "==>downloadFile--fail--notstart=";
                     TN_Log('FileTools --downloadFile --下载文件不存在--', downloadDest);
 
-                    TW_Store.commonBoxStore.isShow = false;
+                    TN_Store.commonBoxStore.isShow = false;
                     if (onSucFuc) {
                         onSucFuc({rs: false, param})
                     }
@@ -93,7 +93,7 @@ export default class FileTools {
         unzip(srcZip, destDir)
             .then((path) => {
                 if (onSucFuc) {
-                    // if(!TW_Store.gameUpateStore.isInSubGame){
+                    // if(!TN_Store.gameUpateStore.isInSubGame){
                     //     Toast.showShortCenter(param.gameName + " 准备完成");
                     // }
                     onSucFuc({rs: true, param})
@@ -101,7 +101,7 @@ export default class FileTools {
                 TN_Log(`FileTools-- unzip completed at------ ${path}`);
             })
             .catch((error) => {
-                if(!TW_Store.gameUpateStore.isInSubGame){
+                if(!TN_Store.gameUpateStore.isInSubGame){
                     Toast.showShortCenter(param.gameName + " 解压失败");
                 }
 
