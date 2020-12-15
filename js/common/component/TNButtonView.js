@@ -100,12 +100,12 @@ export default class TNButtonView extends PureComponent {
             textStyles.push(txtstyle);
         }
         return (
-            <TCButton {...this.props} containStyles={buttonStyles}>
+            <TNButton {...this.props} containStyles={buttonStyles}>
                 {text ? <Text style={textStyles}>
                     {text}
                 </Text>:null}
 
-            </TCButton>
+            </TNButton>
         )
     }
 }

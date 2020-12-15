@@ -15,6 +15,7 @@ import {
     StatusBar, TouchableWithoutFeedback,
 } from 'react-native';
 
+
 import {
     Header,
     LearnMoreLinks,
@@ -32,27 +33,14 @@ import {musicAsset} from './asset/images';
 
 @observer
 export default class Home extends Component {
-
-    // static navigationOptions = {
-    //     headerTitle: 'test661',
-    //
-    //     //headerStyle:{ backgroundColor: 'white', borderBottomWidth:0}
-    //     headerColor: '#ddd',
-    //     headerStyle:{ backgroundColor: 'transparent', borderBottomWidth:0,position: 'absolute',
-    //         top: 0,
-    //         left: 0},
-    //     headerBackTitleStyle: {
-    //         opacity: 0,
-    //     },
-    //     headerTintColor: '#fff'
-    //
-    // }
-
     constructor(pro) {
         super(pro);
         this.state = {
             musicList: [],
+            country: 'uk',
+            selectedItem: 0
         };
+
     }
 
     componentWillMount() {
@@ -60,9 +48,9 @@ export default class Home extends Component {
             let listData=res.content;
             let retList=[];
             for (let data of listData){
-                let imgBig = `${netConfig.appDomain}/${data.name}/${data.name}-big.png`;
-                let imgSmall = `${netConfig.appDomain}/${data.name}/${data.name}-small.png`;
-                let voice=`${netConfig.appDomain}/${data.name}/${data.title}.mp3`;
+                let imgBig = `${netConfig.appDomain}/${data.name}/${data.name}-big.png?v=${data.version}`;
+                let imgSmall = `${netConfig.appDomain}/${data.name}/${data.name}-small.png?v=${data.version}`;
+                let voice=`${netConfig.appDomain}/${data.name}/${data.name}.mp3?v=${data.version}`;
                 retList.push({imgBig,imgSmall,voice,title:data.title,name:data.name})
             }
             this.setState({musicList: retList});
@@ -78,12 +66,12 @@ export default class Home extends Component {
 
         return (<View style={{backgroundColor: 'white', paddingBottom: 100, flex: 1}}>
             {
-                latMusicArr.length > 0 ? this.rendSwiperView(latMusicArr) : null
-                // this.rendGalleryView(latMusicArr)
+                 latMusicArr.length > 0 ? this.rendSwiperView(latMusicArr) : null
             }
             <View style={{flexDirection:"row", backgroundColor:"red", alignSelf:"center",justifyContent:"center",alignItems:"center", position: 'absolute',bottom:100}}>
                 <TNButtonImg imgSource={musicAsset.mainMusic} onClick={this.onMoreMusic}/>
             </View>
+
         </View>);
     }
 
@@ -141,6 +129,7 @@ export default class Home extends Component {
 const styles = StyleSheet.create({
     wrapper: {
         //backgroundColor:"yellow",
+
         paddingVertical: 100,
     },
     text: {

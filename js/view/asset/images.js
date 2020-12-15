@@ -24,6 +24,7 @@ export const musicAsset = {
     mainPlay:require('./ui/main/main_play.png'),
     mainPause:require('./ui/main/main_pause.png'),
     mainMusic:require('./ui/main/musicMore.png'),
+    testMusic:require('./test.mp3'),
 }
 
 

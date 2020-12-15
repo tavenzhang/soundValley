@@ -210,6 +210,8 @@ PODS:
     - React-cxxreact (= 0.63.2)
     - React-jsi (= 0.63.2)
   - React-jsinspector (0.63.2)
+  - react-native-date-picker (3.2.5):
+    - React-Core
   - react-native-splash-screen (3.0.6):
     - React
   - react-native-video (5.1.0-alpha8):
@@ -277,6 +279,8 @@ PODS:
     - React-Core (= 0.63.2)
     - React-cxxreact (= 0.63.2)
     - React-jsi (= 0.63.2)
+  - RNCPicker (1.9.4):
+    - React-Core
   - RNDeviceInfo (2.3.2):
     - React
   - RNFastImage (8.3.4):
@@ -288,6 +292,8 @@ PODS:
   - RNScreens (2.16.1):
     - React-Core
   - RNStoreReview (0.1.5):
+    - React
+  - RNVectorIcons (7.1.0):
     - React
   - SDWebImage (5.9.4):
     - SDWebImage/Core (= 5.9.4)
@@ -321,6 +327,7 @@ DEPENDENCIES:
   - React-jsi (from `../node_modules/react-native/ReactCommon/jsi`)
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
+  - react-native-date-picker (from `../node_modules/react-native-date-picker`)
   - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
   - react-native-video (from `../node_modules/react-native-video`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
@@ -333,11 +340,13 @@ DEPENDENCIES:
   - React-RCTText (from `../node_modules/react-native/Libraries/Text`)
   - React-RCTVibration (from `../node_modules/react-native/Libraries/Vibration`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
+  - "RNCPicker (from `../node_modules/@react-native-picker/picker`)"
   - RNDeviceInfo (from `../node_modules/react-native-device-info`)
   - RNFastImage (from `../node_modules/react-native-fast-image`)
   - RNGestureHandler (from `../node_modules/react-native-gesture-handler`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNStoreReview (from `../node_modules/react-native-store-review/ios`)
+  - RNVectorIcons (from `../node_modules/react-native-vector-icons`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -391,6 +400,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsiexecutor"
   React-jsinspector:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
+  react-native-date-picker:
+    :path: "../node_modules/react-native-date-picker"
   react-native-splash-screen:
     :path: "../node_modules/react-native-splash-screen"
   react-native-video:
@@ -415,6 +426,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/Libraries/Vibration"
   ReactCommon:
     :path: "../node_modules/react-native/ReactCommon"
+  RNCPicker:
+    :path: "../node_modules/@react-native-picker/picker"
   RNDeviceInfo:
     :path: "../node_modules/react-native-device-info"
   RNFastImage:
@@ -425,6 +438,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-screens"
   RNStoreReview:
     :path: "../node_modules/react-native-store-review/ios"
+  RNVectorIcons:
+    :path: "../node_modules/react-native-vector-icons"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -453,6 +468,7 @@ SPEC CHECKSUMS:
   React-jsi: 54245e1d5f4b690dec614a73a3795964eeef13a8
   React-jsiexecutor: 8ca588cc921e70590820ce72b8789b02c67cce38
   React-jsinspector: b14e62ebe7a66e9231e9581279909f2fc3db6606
+  react-native-date-picker: 7b03feaea96db983f1de449e9d6d1dea4fa61010
   react-native-splash-screen: d712b25c25f6671a15227f9b8579f87b2dbb0340
   react-native-video: 8d97379f3c2322a569f1e27542ad1a646cad9444
   React-RCTActionSheet: 910163b6b09685a35c4ebbc52b66d1bfbbe39fc5
@@ -465,11 +481,13 @@ SPEC CHECKSUMS:
   React-RCTText: 1b6773e776e4b33f90468c20fe3b16ca3e224bb8
   React-RCTVibration: 4d2e726957f4087449739b595f107c0d4b6c2d2d
   ReactCommon: a0a1edbebcac5e91338371b72ffc66aa822792ce
+  RNCPicker: 2c31098349f499e7ab4da6c1ce26f7537d271062
   RNDeviceInfo: bdc3e922b2ed0f086e9d9ab534e61bc316f08576
   RNFastImage: d4870d58f5936111c56218dbd7fcfc18e65b58ff
   RNGestureHandler: 9b7e605a741412e20e13c512738a31bd1611759b
   RNScreens: 45c457af3d2ee9e08fc01e70da87e653d46b1198
   RNStoreReview: 62d6afd7c37db711a594bbffca6b0ea3a812b7a8
+  RNVectorIcons: bc69e6a278b14842063605de32bec61f0b251a59
   SDWebImage: b69257f4ab14e9b6a2ef53e910fdf914d8f757c1
   SDWebImageWebPCoder: d0dac55073088d24b2ac1b191a71a8f8d0adac21
   SSZipArchive: 62d4947b08730e4cda640473b0066d209ff033c9
