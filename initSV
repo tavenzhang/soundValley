@@ -1,4 +1,4 @@
-scriptPath=$(cd dirname $0; pwd)
+scriptPath=$(cd `dirname $0`; pwd)
 npm install
 cd $scriptPath/ios
 pod install
