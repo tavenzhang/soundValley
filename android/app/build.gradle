@@ -78,7 +78,7 @@ import com.android.build.OutputFile
  */
 
 project.ext.react = [
-    enableHermes: false,  // clean and rebuild if changing
+    enableHermes: true,  // clean and rebuild if changing
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
@@ -118,7 +118,7 @@ def jscFlavor = 'org.webkit:android-jsc:+'
  * on project.ext.react, JavaScript will not be compiled to Hermes Bytecode
  * and the benefits of using Hermes will therefore be sharply reduced.
  */
-def enableHermes = project.ext.react.get("enableHermes", false);
+def enableHermes = project.ext.react.get("enableHermes", true);
 
 android {
     compileSdkVersion rootProject.ext.compileSdkVersion
@@ -134,6 +134,7 @@ android {
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
     }
     splits {
         abi {
@@ -143,6 +144,33 @@ android {
             include "armeabi-v7a", "x86", "arm64-v8a", "x86_64"
         }
     }
+
+//      productFlavors {
+//            taven {
+//                applicationId APP_ID
+//                versionName APP_VERSION
+//                resValue "string", "app_name", new String(APP_NAME.getBytes("iso8859-1"), "UTF-8")
+//                manifestPlaceholders = [
+//                        APP_VERSION    : APP_VERSION,
+//                        CHANNEL_AFFCODE: AFF_CODE,
+//                        JPUSH_PKGNAME  : APP_ID,
+//                        JPUSH_APPKEY   : JPUSH_KEY,
+//                        JPUSH_CHANNEL  : "developer-default",
+//                        UMENG_KEY      : UMENG_KEY,
+//                        UMENG_CHANNEL  : "developer-default",
+//                        PLAT_ID        : PLAT_ID,
+//                        PLAT_CH        : PLAT_CH,
+//                        SUB_TYPE       : SUB_TYPE,
+//                        APP_DOWNLOAD_VERSION : APP_DOWNLOAD_VERSION,
+//                        OPEN_INSTALL_KEY:OPEN_INSTALL_KEY
+//                ]
+//                dimension "color"
+//                buildConfigField("String", "UMENG_KEY", "\"${UMENG_KEY}\"")
+//                buildConfigField("String", "WECHAT_KEY", "\"${WECHAT_KEY}\"")
+//                buildConfigField("String", "WECHAT_SECRET_KEY", "\"${WECHAT_SECRET_KEY}\"")
+//            }
+//        }
+
     signingConfigs {
         debug {
             storeFile file('debug.keystore')
