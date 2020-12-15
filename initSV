@@ -1,5 +1,8 @@
 scriptPath=$(cd `dirname $0`; pwd)
 npm install
+cp -rf init/react-native-xcode.sh ./node_modules/react-native/scripts/react-native-xcode.sh
+
 cd $scriptPath/ios
 pod install
 cd $scriptPath
+
