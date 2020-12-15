@@ -10,8 +10,8 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.m */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		62BDC146E3CEE724B9C13F54 /* libPods-SoundValley.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 9EBA9285FA0DB16B1F882BDC /* libPods-SoundValley.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
-		F937C51FFD8C793C7B5E803E /* libPods-SoundVelley.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B1BB2A498142FE73ECE92A22 /* libPods-SoundVelley.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,19 +20,21 @@
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		00E356F21AD99517003FC87E /* SoundVelleyTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SoundVelleyTests.m; sourceTree = "<group>"; };
 		10900A9CE40D01A50EEE744C /* libPods-SoundVelley-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SoundVelley-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07F961A680F5B00A75B9A /* SoundVelley.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoundVelley.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07F961A680F5B00A75B9A /* SoundValley.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoundValley.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = SoundVelley/AppDelegate.h; sourceTree = "<group>"; };
 		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = SoundVelley/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = SoundVelley/Images.xcassets; sourceTree = "<group>"; };
 		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = SoundVelley/Info.plist; sourceTree = "<group>"; };
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = SoundVelley/main.m; sourceTree = "<group>"; };
+		148A3D777DFF851676A0B86E /* Pods-SoundValley.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoundValley.release.xcconfig"; path = "Target Support Files/Pods-SoundValley/Pods-SoundValley.release.xcconfig"; sourceTree = "<group>"; };
+		2208A953F837E71270C2E54A /* Pods-SoundValley.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoundValley.debug.xcconfig"; path = "Target Support Files/Pods-SoundValley/Pods-SoundValley.debug.xcconfig"; sourceTree = "<group>"; };
 		4B655FC56B75E0B288BE972C /* Pods-SoundVelley-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoundVelley-tvOS.debug.xcconfig"; path = "Target Support Files/Pods-SoundVelley-tvOS/Pods-SoundVelley-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		7A00FF4191336D3D54849DCD /* Pods-SoundVelley-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoundVelley-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-SoundVelley-tvOSTests/Pods-SoundVelley-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7FB342B65C62B6DFE79101B3 /* Pods-SoundVelley.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoundVelley.release.xcconfig"; path = "Target Support Files/Pods-SoundVelley/Pods-SoundVelley.release.xcconfig"; sourceTree = "<group>"; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = SoundVelley/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		841D6BEE8B701F8669E483F2 /* Pods-SoundVelley-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoundVelley-tvOS.release.xcconfig"; path = "Target Support Files/Pods-SoundVelley-tvOS/Pods-SoundVelley-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		9EBA9285FA0DB16B1F882BDC /* libPods-SoundValley.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SoundValley.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A86CEFD0DB515400008F08CE /* Pods-SoundVelley.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoundVelley.debug.xcconfig"; path = "Target Support Files/Pods-SoundVelley/Pods-SoundVelley.debug.xcconfig"; sourceTree = "<group>"; };
-		B1BB2A498142FE73ECE92A22 /* libPods-SoundVelley.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SoundVelley.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		B87556BA8D40FBE04DAC0592 /* Pods-SoundVelley-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoundVelley-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-SoundVelley-tvOSTests/Pods-SoundVelley-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
 		D9224F7770E4434B8A37DF2B /* libPods-SoundVelley-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SoundVelley-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
@@ -46,7 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F937C51FFD8C793C7B5E803E /* libPods-SoundVelley.a in Frameworks */,
+				62BDC146E3CEE724B9C13F54 /* libPods-SoundValley.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,10 +91,10 @@
 			children = (
 				ED297162215061F000B7C4FE /* JavaScriptCore.framework */,
 				ED2971642150620600B7C4FE /* JavaScriptCore.framework */,
-				B1BB2A498142FE73ECE92A22 /* libPods-SoundVelley.a */,
 				FBBD05A3CB82AD7025EFCD22 /* libPods-SoundVelley-SoundVelleyTests.a */,
 				D9224F7770E4434B8A37DF2B /* libPods-SoundVelley-tvOS.a */,
 				10900A9CE40D01A50EEE744C /* libPods-SoundVelley-tvOSTests.a */,
+				9EBA9285FA0DB16B1F882BDC /* libPods-SoundValley.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -108,6 +110,8 @@
 				841D6BEE8B701F8669E483F2 /* Pods-SoundVelley-tvOS.release.xcconfig */,
 				7A00FF4191336D3D54849DCD /* Pods-SoundVelley-tvOSTests.debug.xcconfig */,
 				B87556BA8D40FBE04DAC0592 /* Pods-SoundVelley-tvOSTests.release.xcconfig */,
+				2208A953F837E71270C2E54A /* Pods-SoundValley.debug.xcconfig */,
+				148A3D777DFF851676A0B86E /* Pods-SoundValley.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -137,7 +141,7 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* SoundVelley.app */,
+				13B07F961A680F5B00A75B9A /* SoundValley.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -145,9 +149,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		13B07F861A680F5B00A75B9A /* SoundVelley */ = {
+		13B07F861A680F5B00A75B9A /* SoundValley */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "SoundVelley" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "SoundValley" */;
 			buildPhases = (
 				EB7F3793FD268C832CF1B2C2 /* [CP] Check Pods Manifest.lock */,
 				FD10A7F022414F080027D42C /* Start Packager */,
@@ -161,9 +165,9 @@
 			);
 			dependencies = (
 			);
-			name = SoundVelley;
+			name = SoundValley;
 			productName = SoundVelley;
-			productReference = 13B07F961A680F5B00A75B9A /* SoundVelley.app */;
+			productReference = 13B07F961A680F5B00A75B9A /* SoundValley.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -180,7 +184,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "SoundVelley" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "SoundValley" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -193,7 +197,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* SoundVelley */,
+				13B07F861A680F5B00A75B9A /* SoundValley */,
 			);
 		};
 /* End PBXProject section */
@@ -231,7 +235,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-SoundVelley/Pods-SoundVelley-resources.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-SoundValley/Pods-SoundValley-resources.sh",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/AntDesign.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/Entypo.ttf",
 				"${PODS_ROOT}/../../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf",
@@ -272,7 +276,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SoundVelley/Pods-SoundVelley-resources.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SoundValley/Pods-SoundValley-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		EB7F3793FD268C832CF1B2C2 /* [CP] Check Pods Manifest.lock */ = {
@@ -290,7 +294,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-SoundVelley-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-SoundValley-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -333,7 +337,7 @@
 /* Begin XCBuildConfiguration section */
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A86CEFD0DB515400008F08CE /* Pods-SoundVelley.debug.xcconfig */;
+			baseConfigurationReference = 2208A953F837E71270C2E54A /* Pods-SoundValley.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -383,7 +387,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.new.goodsound;
-				PRODUCT_NAME = SoundVelley;
+				PRODUCT_NAME = SoundValley;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -392,7 +396,7 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7FB342B65C62B6DFE79101B3 /* Pods-SoundVelley.release.xcconfig */;
+			baseConfigurationReference = 148A3D777DFF851676A0B86E /* Pods-SoundValley.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -441,7 +445,7 @@
 					"-lc++",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.new.goodsound;
-				PRODUCT_NAME = SoundVelley;
+				PRODUCT_NAME = SoundValley;
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -563,7 +567,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "SoundVelley" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "SoundValley" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -572,7 +576,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "SoundVelley" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "SoundValley" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,
