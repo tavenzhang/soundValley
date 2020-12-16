@@ -56,7 +56,7 @@ class MusicPlayView extends React.Component {
                 <TNWheelPicker onSelect={this.onSelect} />
             </View>:null}
             <Video
-                source={{uri:music.voice}} // 视频的URL地址，或者本地地址
+                 source={{uri:music.voice}} // 视频的URL地址，或者本地地址
                 //source={musicAsset.testMusic} // 视频的URL地址，或者本地地址
                 audioOnly={true}
                 ref='player'
