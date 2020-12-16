@@ -17,7 +17,7 @@ export let headers = {
 };
 
 export const netConfig = {
-    appDomain:"https://download.jwyxw.net/ios/game/valley",
+    appDomain:"https://download.528768.com/ios/game/valley",
     api: {
         musicJson: {url:"/music.json"}, //获取用户信息
     },
