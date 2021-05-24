@@ -878,7 +878,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 12;
-				DEVELOPMENT_TEAM = JC4D4QGWWG;
+				DEVELOPMENT_TEAM = A45QXUWGW7;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SoundValley/PrefixHeader.pch";
 				INFOPLIST_FILE = SoundValley/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -905,7 +905,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 12;
-				DEVELOPMENT_TEAM = JC4D4QGWWG;
+				DEVELOPMENT_TEAM = A45QXUWGW7;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SoundValley/PrefixHeader.pch";
 				INFOPLIST_FILE = SoundValley/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -968,6 +968,7 @@
 			baseConfigurationReference = 2B8D859C696351644D74ED5F /* Pods-SoundValleyUITests.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = A45QXUWGW7;
 				INFOPLIST_FILE = SoundValleyUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -986,6 +987,7 @@
 			baseConfigurationReference = DF3FE1EAD30AA31FFAA4A608 /* Pods-SoundValleyUITests.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = A45QXUWGW7;
 				INFOPLIST_FILE = SoundValleyUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

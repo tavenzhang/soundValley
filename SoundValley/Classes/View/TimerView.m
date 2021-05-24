@@ -136,7 +136,7 @@
     complateLabel.text = [NSString stringWithFormat:@"%ld",time/60];
     [myView addSubview:complateLabel];
     ((UIView *)[self.pickView.subviews objectAtIndex:1]).backgroundColor = [UIColor clearColor];
-    ((UIView *)[self.pickView.subviews objectAtIndex:2]).backgroundColor = [UIColor clearColor];
+   // ((UIView *)[self.pickView.subviews objectAtIndex:2]).backgroundColor = [UIColor clearColor];
     return myView;
 }
 
