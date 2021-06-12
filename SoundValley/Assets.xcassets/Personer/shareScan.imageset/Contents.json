@@ -1,11 +1,11 @@
 {
   "images" : [
     {
-      "filename" : "main_timer@3x.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
+      "filename" : "share.pdf",
       "idiom" : "universal",
       "scale" : "2x"
     },

@@ -51,6 +51,8 @@
 		189E84912463FD0800D1A332 /* Tools.m in Sources */ = {isa = PBXBuildFile; fileRef = 189E84902463FD0800D1A332 /* Tools.m */; };
 		18E0C9D32474C2AA00DD6E62 /* GuideView.m in Sources */ = {isa = PBXBuildFile; fileRef = 18E0C9D22474C2AA00DD6E62 /* GuideView.m */; };
 		760BAF1F840D6F75A6980B4C /* libPods-SoundValleyTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 211F2E2E3E6D00C9B3345081 /* libPods-SoundValleyTests.a */; };
+		9567435E265D13EB00A547E0 /* DIN Alternate Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9567435D265D13EB00A547E0 /* DIN Alternate Bold.ttf */; };
+		9567436A265D1C4E00A547E0 /* UILabel+YHBaseChangeDefaultFont.m in Sources */ = {isa = PBXBuildFile; fileRef = 95674369265D1C4E00A547E0 /* UILabel+YHBaseChangeDefaultFont.m */; };
 		B218A278D9C93399C20A7F5C /* libPods-SoundValleyUITests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B0164AFA36DA48F50D23F9B3 /* libPods-SoundValleyUITests.a */; };
 		D39F24B8DA60D09B0B6FD75D /* libPods-SoundValley.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E6418B1FB30C8EFD6DA7E9C /* libPods-SoundValley.a */; };
 /* End PBXBuildFile section */
@@ -163,6 +165,9 @@
 		6E6418B1FB30C8EFD6DA7E9C /* libPods-SoundValley.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SoundValley.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		7015B0EFBFDC08ECDE909BDC /* Pods-SoundValley.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoundValley.release.xcconfig"; path = "Target Support Files/Pods-SoundValley/Pods-SoundValley.release.xcconfig"; sourceTree = "<group>"; };
 		92B983165F1E04522EEE0B13 /* Pods-SoundValleyTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoundValleyTests.release.xcconfig"; path = "Target Support Files/Pods-SoundValleyTests/Pods-SoundValleyTests.release.xcconfig"; sourceTree = "<group>"; };
+		9567435D265D13EB00A547E0 /* DIN Alternate Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "DIN Alternate Bold.ttf"; sourceTree = "<group>"; };
+		95674368265D1C4E00A547E0 /* UILabel+YHBaseChangeDefaultFont.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UILabel+YHBaseChangeDefaultFont.h"; sourceTree = "<group>"; };
+		95674369265D1C4E00A547E0 /* UILabel+YHBaseChangeDefaultFont.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UILabel+YHBaseChangeDefaultFont.m"; sourceTree = "<group>"; };
 		B0164AFA36DA48F50D23F9B3 /* libPods-SoundValleyUITests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-SoundValleyUITests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CD7E53883E4E1BA191E4E5AE /* Pods-SoundValleyTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoundValleyTests.debug.xcconfig"; path = "Target Support Files/Pods-SoundValleyTests/Pods-SoundValleyTests.debug.xcconfig"; sourceTree = "<group>"; };
 		DF3FE1EAD30AA31FFAA4A608 /* Pods-SoundValleyUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SoundValleyUITests.release.xcconfig"; path = "Target Support Files/Pods-SoundValleyUITests/Pods-SoundValleyUITests.release.xcconfig"; sourceTree = "<group>"; };
@@ -331,6 +336,7 @@
 		18493C73245D1FF700690E92 /* Resourse */ = {
 			isa = PBXGroup;
 			children = (
+				9567435D265D13EB00A547E0 /* DIN Alternate Bold.ttf */,
 				18493C74245D201700690E92 /* animation.bundle */,
 				18493C8A2460710900690E92 /* voice.bundle */,
 			);
@@ -362,6 +368,8 @@
 			children = (
 				185822BC2467F13900974FA4 /* UIImage+ZFFilter.h */,
 				185822BD2467F13900974FA4 /* UIImage+ZFFilter.m */,
+				95674368265D1C4E00A547E0 /* UILabel+YHBaseChangeDefaultFont.h */,
+				95674369265D1C4E00A547E0 /* UILabel+YHBaseChangeDefaultFont.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -562,6 +570,7 @@
 				18493C3B245BC77400690E92 /* Assets.xcassets in Resources */,
 				189E8488246071D900D1A332 /* README.md in Resources */,
 				18493C39245BC77000690E92 /* Main.storyboard in Resources */,
+				9567435E265D13EB00A547E0 /* DIN Alternate Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -695,6 +704,7 @@
 				189E84912463FD0800D1A332 /* Tools.m in Sources */,
 				189E848E24619D9700D1A332 /* AudioPlayerTool.m in Sources */,
 				189E8483246071D900D1A332 /* KJBannerTool.m in Sources */,
+				9567436A265D1C4E00A547E0 /* UILabel+YHBaseChangeDefaultFont.m in Sources */,
 				18493C72245BDC3400690E92 /* SVViewController.m in Sources */,
 				1849F8E524710D8100BCB5D4 /* WebViewViewController.m in Sources */,
 				185822D7246CDF7B00974FA4 /* PQ_TimerManager.m in Sources */,
@@ -877,8 +887,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
-				DEVELOPMENT_TEAM = A45QXUWGW7;
+				CURRENT_PROJECT_VERSION = 13;
+				DEVELOPMENT_TEAM = JC4D4QGWWG;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SoundValley/PrefixHeader.pch";
 				INFOPLIST_FILE = SoundValley/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -887,7 +897,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				MARKETING_VERSION = 1.0.4;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SoundValley.goodsound;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -904,8 +914,8 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
-				DEVELOPMENT_TEAM = A45QXUWGW7;
+				CURRENT_PROJECT_VERSION = 13;
+				DEVELOPMENT_TEAM = JC4D4QGWWG;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SoundValley/PrefixHeader.pch";
 				INFOPLIST_FILE = SoundValley/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
@@ -914,7 +924,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				MARKETING_VERSION = 1.0.4;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SoundValley.goodsound;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

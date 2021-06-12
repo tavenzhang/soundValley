@@ -31,9 +31,14 @@
 	<string>请允许APP保存图片到相册</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>请允许APP访问您的相册</string>
+	<key>UIAppFonts</key>
+	<array>
+		<string>DIN Alternate Bold.ttf</string>
+	</array>
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>audio</string>
+		<string>bluetooth-central</string>
 	</array>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>

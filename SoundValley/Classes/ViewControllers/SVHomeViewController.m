@@ -29,6 +29,7 @@
 @property (nonatomic, strong) UILabel *timeLabel;
 @property (nonatomic, strong) UIButton *timeButton;
 @property (nonatomic, strong) UIButton *playButton;
+@property (nonatomic, strong) UIButton *sceneButton;
 @property (nonatomic, strong) TimerView *timeView;
 @property (nonatomic, strong) PQ_TimerManager *playerTimer;
 @property (nonatomic, assign) NSInteger currentSeconds;
@@ -53,7 +54,7 @@
 -(void)setNav
 {
     self.title = @"山谷";
-    [self setLeftNavBar:@"main_left"];
+   // [self setLeftNavBar:@"main_left"];
     [self setRightNavBar:@"main_right"];
 }
 
@@ -106,6 +107,7 @@
      [self.view addSubview:self.playButton];
      [self.view addSubview:self.timeLabel];
      [self.view addSubview:self.timeButton];
+     [self.view addSubview:self.sceneButton];
 }
 
 -(void)may_layoutSubviews
@@ -117,18 +119,35 @@
      }];
     [self.playButton mas_makeConstraints:^(MASConstraintMaker *make) {
         make.size.mas_equalTo(CGSizeMake(ScaleFit(60), ScaleFit(60)));
-        make.center.mas_equalTo(self.loadingView);
+//        make.left.mas_equalTo(self.view);
+//        make.right.mas_equalTo(self.view);
+        make.centerX.equalTo(self.view);
+       // make.center.mas_equalTo(self.loadingView);
+        make.bottom.mas_equalTo(self.view.mas_bottom).offset( IS_IPhoneXAll ? -63:-30);
     }];
     [self.timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.view);
-        make.right.mas_equalTo(self.view);
+       // make.left.mas_equalTo(self.view);
+       // make.right.mas_equalTo(self.view);
         make.height.mas_equalTo(30);
-        make.bottom.mas_equalTo(self.view.mas_bottom).offset( IS_IPhoneXAll ? -103:-70);
+        make.center.mas_equalTo(self.loadingView);
+        //make.bottom.mas_equalTo(self.view.mas_bottom).offset( IS_IPhoneXAll ? -103:-70);
     }];
     [self.timeButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(80, 40));
-        make.centerX.equalTo(self.view);
-        make.bottom.equalTo(self.view.mas_bottom).offset(IS_IPhoneXAll ?-63:-30);
+        make.size.mas_equalTo(CGSizeMake(ScaleFit(60), ScaleFit(60)));
+      //  make.size.mas_equalTo(CGSizeMake(ScaleFit(60), ScaleFit(60)));
+        
+        make.centerX.equalTo(self.view).offset(100);
+        make.bottom.mas_equalTo(self.view.mas_bottom).offset( IS_IPhoneXAll ? -63:-30);
+
+       // make.bottom.equalTo(self.view.mas_bottom).offset(IS_IPhoneXAll ?-63:-30);
+    }];
+    [self.sceneButton mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.size.mas_equalTo(CGSizeMake(ScaleFit(60), ScaleFit(60)));
+       // make.size.mas_equalTo(CGSizeMake(ScaleFit(60), ScaleFit(60)));
+        make.centerX.equalTo(self.view).offset(-100);
+        make.bottom.mas_equalTo(self.view.mas_bottom).offset( IS_IPhoneXAll ? -63:-30);
+
+       // make.bottom.equalTo(self.view.mas_bottom).offset(IS_IPhoneXAll ?-63:-30);
     }];
 }
 
@@ -358,12 +377,31 @@
     [[SVPlayerManager sharedInstance] setCustomVolume:self.valumsSeconds];
 }
 
+-(UIButton *)sceneButton
+{
+    if (!_sceneButton) {
+        _sceneButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [_sceneButton setImage:[UIImage imageNamed:@"main_left"] forState:UIControlStateNormal];
+        [_sceneButton setTitle:@"场景" forState:UIControlStateNormal];
+        _sceneButton.titleEdgeInsets = UIEdgeInsetsMake(_playButton.currentImage.size.height+10, -(_sceneButton.currentImage.size.width+20), 0, 0);
+        _sceneButton.titleLabel.font = [UIFont systemFontOfSize:14];
+        [_sceneButton addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchUpInside];
+    }
+    return _sceneButton;
+}
+
+
 -(UIButton *)playButton
 {
     if (!_playButton) {
         _playButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_playButton setImage:[UIImage imageNamed:@"main_play"] forState:UIControlStateNormal];
         [_playButton setImage:[UIImage imageNamed:@"main_pause"] forState:UIControlStateSelected];
+        [_playButton setTitle:@"播放" forState:UIControlStateNormal];
+        [_playButton setTitle:@"停止" forState:UIControlStateSelected];
+//        _playButton.imageEdgeInsets = UIEdgeInsetsMake(-_playButton.titleLabel.intrinsicContentSize.height, 0, 0, -_playButton.titleLabel.intrinsicContentSize.width);
+        _playButton.titleEdgeInsets = UIEdgeInsetsMake(_playButton.currentImage.size.height+10, -(_playButton.currentImage.size.width), 0, 0);
+        _playButton.titleLabel.font = [UIFont systemFontOfSize:14];
         [_playButton addTarget:self action:@selector(clickPlayButton) forControlEvents:UIControlEventTouchUpInside];
     }
     return _playButton;
@@ -403,7 +441,7 @@
         _timeLabel.font = [UIFont systemFontOfSize:34];
         _timeLabel.textAlignment = NSTextAlignmentCenter;
         _timeLabel.text = [Tools getSecondsStr:self.currentSeconds];
-        _timeLabel.userInteractionEnabled = YES;
+        _timeLabel.userInteractionEnabled = NO;
         UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickTimeButtonAction)];
         [_timeLabel addGestureRecognizer:tap];
     }
@@ -416,9 +454,10 @@
         _timeButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_timeButton setImage:[UIImage imageNamed:@"main_timer"] forState:UIControlStateNormal];
         [_timeButton setTitle:@"定时" forState:UIControlStateNormal];
-        _timeButton.imageEdgeInsets = UIEdgeInsetsMake(-10, 20, -10, 40);
-        _timeButton.titleEdgeInsets = UIEdgeInsetsMake(0, 10, 0, 0);
-        _timeButton.titleLabel.font = [UIFont systemFontOfSize:12];
+      //  _timeButton.imageEdgeInsets = UIEdgeInsetsMake(-_timeButton.titleLabel.intrinsicContentSize.height, 0, 0, -_timeButton.titleLabel.intrinsicContentSize.width);
+       // _timeButton.titleEdgeInsets = UIEdgeInsetsMake(_timeButton.currentImage.size.height, -_timeButton.currentImage.size.width+10, 0, 0);
+        _timeButton.titleEdgeInsets = UIEdgeInsetsMake(_playButton.currentImage.size.height+10, -(_timeButton.currentImage.size.width+20), 0, 0);
+        _timeButton.titleLabel.font = [UIFont systemFontOfSize:14];
         [_timeButton setTitleColor:[UIColor colorWithWhite:1 alpha:0.5] forState:UIControlStateNormal];
         [_timeButton addTarget:self action:@selector(clickTimeButtonAction) forControlEvents:UIControlEventTouchUpInside];
         _timeButton.imageView.contentMode = UIViewContentModeScaleAspectFill;

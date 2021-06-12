@@ -70,6 +70,9 @@
             dispatch_async(dispatch_get_main_queue(), ^{
                 self.banner.imageDatas = self.shareImages;
             });
+        }else
+        {
+            
         }
     }];
 }
@@ -78,12 +81,15 @@
 -(void)clickSaveViewAction
 {
     NSLog(@"currentBannerIndex------%ld",self.banner.index);
-    if (self.shareImages.count != 0) {
-       NSURL *url = [NSURL URLWithString:self.shareImages[self.banner.index]];
-        // 获取的图片地址
-       UIImage *image = [UIImage imageWithData: [NSData dataWithContentsOfURL:url]];
-       [self loadImageFinished:image];
-    }
+//    if (self.shareImages.count != 0) {
+//       NSURL *url = [NSURL URLWithString:self.shareImages[self.banner.index]];
+//        // 获取的图片地址
+//       UIImage *image = [UIImage imageWithData: [NSData dataWithContentsOfURL:url]];
+//
+//       [self loadImageFinished:image];
+//    }
+    UIImage *image =[UIImage imageNamed:@"shareScan"];
+    [self loadImageFinished:image];
 }
 
 // save photo
@@ -121,8 +127,10 @@
               self.shareImages = [[NSUserDefaults standardUserDefaults] objectForKey:@"SHARE_IMAGE_CACHE"];
               _banner.imageDatas = self.shareImages;
           }
-//        _banner.imageDatas = @[@"sg-big",@"sl-big",@"hl-big",@"ht-big",@"hp-big",@"gl-big",@"yt-big",@"yd-big",@"sd-big",
-//        @"wq-big",@"ddsz-big",@"ppq-big",@"jpdz-big",@"qb-big"];
+      //  _banner.imageDatas = @[@"sg-big",@"sl-big",@"hl-big",@"ht-big",@"hp-big",@"gl-big",@"yt-big",@"yd-big",@"sd-big",
+      // @"wq-big",@"ddsz-big",@"ppq-big",@"jpdz-big",@"qb-big"];
+        _banner.imageDatas = @[@"shareScan"];
+        
         _banner.pageControl.hidden = YES;
         _banner.center = self.view.center;
     }
