@@ -102,6 +102,7 @@
 {
     if (!error) {
         [self.view makeToast:@"保存成功"];
+
     }
     NSLog(@"image = %@, error = %@, contextInfo = %@", image, error, contextInfo);
 }

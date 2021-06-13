@@ -118,8 +118,8 @@
          make.height.width.mas_equalTo(ScaleFit(300));
      }];
     [self.playButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(ScaleFit(60), ScaleFit(60)));
-//        make.left.mas_equalTo(self.view);
+     //   make.size.mas_equalTo(CGSizeMake(ScaleFit(60), ScaleFit(60)));
+//       make.left.mas_equalTo(self.view);
 //        make.right.mas_equalTo(self.view);
         make.centerX.equalTo(self.view);
        // make.center.mas_equalTo(self.loadingView);
@@ -133,16 +133,16 @@
         //make.bottom.mas_equalTo(self.view.mas_bottom).offset( IS_IPhoneXAll ? -103:-70);
     }];
     [self.timeButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(ScaleFit(60), ScaleFit(60)));
+       // make.size.mas_equalTo(CGSizeMake(ScaleFit(60), ScaleFit(60)));
       //  make.size.mas_equalTo(CGSizeMake(ScaleFit(60), ScaleFit(60)));
-        
+
         make.centerX.equalTo(self.view).offset(100);
         make.bottom.mas_equalTo(self.view.mas_bottom).offset( IS_IPhoneXAll ? -63:-30);
 
        // make.bottom.equalTo(self.view.mas_bottom).offset(IS_IPhoneXAll ?-63:-30);
     }];
     [self.sceneButton mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.size.mas_equalTo(CGSizeMake(ScaleFit(60), ScaleFit(60)));
+      //  make.size.mas_equalTo(CGSizeMake(ScaleFit(60), ScaleFit(60)));
        // make.size.mas_equalTo(CGSizeMake(ScaleFit(60), ScaleFit(60)));
         make.centerX.equalTo(self.view).offset(-100);
         make.bottom.mas_equalTo(self.view.mas_bottom).offset( IS_IPhoneXAll ? -63:-30);
@@ -383,7 +383,9 @@
         _sceneButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_sceneButton setImage:[UIImage imageNamed:@"main_left"] forState:UIControlStateNormal];
         [_sceneButton setTitle:@"场景" forState:UIControlStateNormal];
-        _sceneButton.titleEdgeInsets = UIEdgeInsetsMake(_playButton.currentImage.size.height+10, -(_sceneButton.currentImage.size.width+20), 0, 0);
+        _sceneButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;//使图片和文字水平居中显示
+        _sceneButton.imageEdgeInsets = UIEdgeInsetsMake(-_sceneButton.titleLabel.intrinsicContentSize.height, 0, 0, -_sceneButton.titleLabel.intrinsicContentSize.width);
+        _sceneButton.titleEdgeInsets = UIEdgeInsetsMake(_playButton.currentImage.size.height+20, -(_sceneButton.currentImage.size.width-10), 0, 0);
         _sceneButton.titleLabel.font = [UIFont systemFontOfSize:14];
         [_sceneButton addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -399,8 +401,9 @@
         [_playButton setImage:[UIImage imageNamed:@"main_pause"] forState:UIControlStateSelected];
         [_playButton setTitle:@"播放" forState:UIControlStateNormal];
         [_playButton setTitle:@"停止" forState:UIControlStateSelected];
-//        _playButton.imageEdgeInsets = UIEdgeInsetsMake(-_playButton.titleLabel.intrinsicContentSize.height, 0, 0, -_playButton.titleLabel.intrinsicContentSize.width);
-        _playButton.titleEdgeInsets = UIEdgeInsetsMake(_playButton.currentImage.size.height+10, -(_playButton.currentImage.size.width), 0, 0);
+       _playButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;//使图片和文字水平居中显示
+        _playButton.imageEdgeInsets = UIEdgeInsetsMake(-_playButton.titleLabel.intrinsicContentSize.height, 0, 0, -_playButton.titleLabel.intrinsicContentSize.width);
+      _playButton.titleEdgeInsets = UIEdgeInsetsMake(_playButton.currentImage.size.height+20, -(_playButton.currentImage.size.width-10), 0, 0);
         _playButton.titleLabel.font = [UIFont systemFontOfSize:14];
         [_playButton addTarget:self action:@selector(clickPlayButton) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -424,9 +427,10 @@
 - (LOTAnimationView *)loadingView
 {
     if (!_loadingView) {
+       // _loadingView = [LOTAnimationView animationNamed:@"clock" inBundle:[NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"animation" ofType:@"bundle"]]];
         _loadingView = [LOTAnimationView animationNamed:@"shenggu4s" inBundle:[NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"animation" ofType:@"bundle"]]];
 //        _loadingView.autoReverseAnimation = YES;
-//        _loadingView.loopAnimation = YES;
+     // _loadingView.loopAnimation = YES;
         _loadingView.cacheEnable = YES;
         _loadingView.shouldRasterizeWhenIdle = YES;
     }
@@ -438,7 +442,7 @@
     if (!_timeLabel) {
         _timeLabel = [[UILabel alloc] init];
         _timeLabel.textColor = [UIColor whiteColor];
-        _timeLabel.font = [UIFont systemFontOfSize:34];
+        _timeLabel.font =  [UIFont fontWithName:@"DINAlternate-Bold" size:34];
         _timeLabel.textAlignment = NSTextAlignmentCenter;
         _timeLabel.text = [Tools getSecondsStr:self.currentSeconds];
         _timeLabel.userInteractionEnabled = NO;
@@ -454,9 +458,9 @@
         _timeButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_timeButton setImage:[UIImage imageNamed:@"main_timer"] forState:UIControlStateNormal];
         [_timeButton setTitle:@"定时" forState:UIControlStateNormal];
-      //  _timeButton.imageEdgeInsets = UIEdgeInsetsMake(-_timeButton.titleLabel.intrinsicContentSize.height, 0, 0, -_timeButton.titleLabel.intrinsicContentSize.width);
-       // _timeButton.titleEdgeInsets = UIEdgeInsetsMake(_timeButton.currentImage.size.height, -_timeButton.currentImage.size.width+10, 0, 0);
-        _timeButton.titleEdgeInsets = UIEdgeInsetsMake(_playButton.currentImage.size.height+10, -(_timeButton.currentImage.size.width+20), 0, 0);
+        _timeButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;//使图片和文字水平居中显示
+        _timeButton.imageEdgeInsets = UIEdgeInsetsMake(-_timeButton.titleLabel.intrinsicContentSize.height, 0, 0, -_timeButton.titleLabel.intrinsicContentSize.width);
+        _timeButton.titleEdgeInsets = UIEdgeInsetsMake(_playButton.currentImage.size.height+20, -(_timeButton.currentImage.size.width-10), 0, 0);
         _timeButton.titleLabel.font = [UIFont systemFontOfSize:14];
         [_timeButton setTitleColor:[UIColor colorWithWhite:1 alpha:0.5] forState:UIControlStateNormal];
         [_timeButton addTarget:self action:@selector(clickTimeButtonAction) forControlEvents:UIControlEventTouchUpInside];
