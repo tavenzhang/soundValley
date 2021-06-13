@@ -92,9 +92,9 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGFloat dim =(SCREEN_WIDTH-80*3)/4;
+    CGFloat dim =(SCREEN_WIDTH)/2;
    // return CGSizeMake((SCREEN_WIDTH-2*dim)/3, 150);
-   return CGSizeMake(118, 140);
+   return CGSizeMake(dim, 290);
   
 }
 
@@ -103,8 +103,10 @@
 {
     SceneListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SceneListCollectionViewCell" forIndexPath:indexPath];
     NSDictionary *dic = self.dataArray[ self.dataArray.count-1-indexPath.row];
-    cell.iconImageView.image = [UIImage imageNamed:dic[@"icon"]];
+    cell.iconImageView.image = [UIImage imageNamed:dic[@"bigIcon"]];
     cell.sceneTitleLabel.text = dic[@"title"];
+    cell.playImageView.image=[UIImage imageNamed:@"play-scene"];
+   
     return cell;
 }
 

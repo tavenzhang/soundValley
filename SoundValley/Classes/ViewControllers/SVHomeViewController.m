@@ -179,6 +179,7 @@
 {
     [self.loadingView playFromProgress:self.animationProgress toProgress:1 withCompletion:^(BOOL animationFinished) {
         if (animationFinished) {
+          NSLog(@"animationFinished----------%f",self.loadingView.animationProgress);
           self.animationProgress = 0;
           [self playLoadView];
         }
@@ -427,8 +428,8 @@
 - (LOTAnimationView *)loadingView
 {
     if (!_loadingView) {
-       // _loadingView = [LOTAnimationView animationNamed:@"clock" inBundle:[NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"animation" ofType:@"bundle"]]];
-        _loadingView = [LOTAnimationView animationNamed:@"shenggu4s" inBundle:[NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"animation" ofType:@"bundle"]]];
+        _loadingView = [LOTAnimationView animationNamed:@"clock" inBundle:[NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"animation" ofType:@"bundle"]]];
+     //   _loadingView = [LOTAnimationView animationNamed:@"shenggu4s" inBundle:[NSBundle bundleWithPath:[[NSBundle mainBundle] pathForResource:@"animation" ofType:@"bundle"]]];
 //        _loadingView.autoReverseAnimation = YES;
      // _loadingView.loopAnimation = YES;
         _loadingView.cacheEnable = YES;
