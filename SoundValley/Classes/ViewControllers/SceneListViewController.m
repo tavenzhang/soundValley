@@ -12,6 +12,7 @@
 @interface SceneListViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic,strong)NSArray *dataArray;
 @property (nonatomic,strong)UICollectionView *collectionView;
+@property (nonatomic, strong) UILabel *titleLabel;
 @end
 
 @implementation SceneListViewController
@@ -61,7 +62,18 @@
        self.collectionView.scrollIndicatorInsets = insets;
     }
     self.view.backgroundColor = [UIColor whiteColor];
+    //[self.view addSubview:self.titleLabel];
     [self.view addSubview:self.collectionView];
+  
+//    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+//       // make.left.mas_equalTo(self.view);
+//       // make.right.mas_equalTo(self.view);
+//        make.top.mas_equalTo(self.view).offset(100);
+//       // make.center.mas_equalTo(self.view);
+//        //make.bottom.mas_equalTo(self.view.mas_bottom).offset( IS_IPhoneXAll ? -103:-70);
+//    }];
+
+
 }
 
 -(UICollectionView *)collectionView
@@ -95,18 +107,18 @@
     CGFloat dim =(SCREEN_WIDTH)/2;
    // return CGSizeMake((SCREEN_WIDTH-2*dim)/3, 150);
    return CGSizeMake(dim, 290);
-  
+
 }
 
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     SceneListCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"SceneListCollectionViewCell" forIndexPath:indexPath];
-    NSDictionary *dic = self.dataArray[ self.dataArray.count-1-indexPath.row];
+    NSDictionary *dic = self.dataArray[indexPath.row];
     cell.iconImageView.image = [UIImage imageNamed:dic[@"bigIcon"]];
     cell.sceneTitleLabel.text = dic[@"title"];
     cell.playImageView.image=[UIImage imageNamed:@"play-scene"];
-   
+
     return cell;
 }
 
@@ -139,6 +151,19 @@
 -(void)initData
 {
     self.dataArray = [InitData getSceneListData];
+}
+
+-(UILabel *)titleLabel
+{
+    if (!_titleLabel) {
+        _titleLabel = [[UILabel alloc] init];
+        _titleLabel.textColor = [UIColor blackColor];
+        _titleLabel.font =  [UIFont fontWithName:@"DINAlternate-Bold" size:30];
+        _titleLabel.textAlignment = NSTextAlignmentCenter;
+        _titleLabel.text = @"场景";
+        _titleLabel.userInteractionEnabled = NO;
+    }
+    return _titleLabel;
 }
 
 /*

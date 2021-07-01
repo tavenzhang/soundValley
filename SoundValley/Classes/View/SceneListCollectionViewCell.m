@@ -25,7 +25,7 @@
        // self.backgroundColor =[UIColor redColor];
         CGFloat scale = [UIScreen mainScreen].scale ;
         CGFloat dimNew=(SCREEN_WIDTH/2-125)/2;
-        _iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(dimNew, 0,125, 255)];
+        _iconImageView = [[UIImageView alloc] initWithFrame:CGRectMake(dimNew, 0,125, 225)];
         _iconImageView.contentMode = UIViewContentModeScaleAspectFill;
         _iconImageView.layer.masksToBounds = YES;
         _iconImageView.layer.cornerRadius = 20;
@@ -39,7 +39,7 @@
        // self.backgroundColor =[UIColor redColor];
         CGFloat scale = [UIScreen mainScreen].scale ;
         CGFloat dimNew=(SCREEN_WIDTH/2-28)/2;
-        _playImageView = [[UIImageView alloc] initWithFrame:CGRectMake(dimNew, 210,28, 28)];
+        _playImageView = [[UIImageView alloc] initWithFrame:CGRectMake(dimNew, 180,28, 28)];
         _playImageView.contentMode = UIViewContentModeScaleAspectFill;
         _playImageView.layer.masksToBounds = YES;
         _playImageView.layer.cornerRadius = 1;
@@ -51,7 +51,7 @@
 {
     if (!_sceneTitleLabel) {
         CGFloat dimNew=(SCREEN_WIDTH/2-118)/2;
-        _sceneTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(dimNew, 265, 118, 30)];
+        _sceneTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(dimNew, 235, 118, 30)];
         _sceneTitleLabel.textAlignment = NSTextAlignmentCenter;
        // _sceneTitleLabel.font = [UIFont systemFontOfSize:15];
         _sceneTitleLabel.font = [UIFont fontWithName:@"DINAlternate-Bold" size:15];
