@@ -13,7 +13,11 @@
 @property (nonatomic,strong)NSArray *dataArray;
 @property (nonatomic,strong)UICollectionView *collectionView;
 @property (nonatomic, strong) UILabel *titleLabel;
+@property (nonatomic, strong) UILabel *subtitleLabel;
+
 @end
+
+#define COLOR_WITH_HEX(hexValue) [UIColor colorWithRed:((float)((hexValue & 0xFF0000) >> 16)) / 255.0 green:((float)((hexValue & 0xFF00) >> 8)) / 255.0 blue:((float)(hexValue & 0xFF)) / 255.0 alpha:1.0f]
 
 @implementation SceneListViewController
 
@@ -27,7 +31,7 @@
 
 -(void)setNav
 {
-    self.title = @"场景音效";
+ //   self.title = @"场景音效";
     [self setLeftNavBar:@"black_left_arrow"];
 }
 
@@ -55,25 +59,26 @@
 {
     if([self respondsToSelector:@selector(automaticallyAdjustsScrollViewInsets)])
     {
-       self.automaticallyAdjustsScrollViewInsets = NO;
+       self.automaticallyAdjustsScrollViewInsets = YES;
        UIEdgeInsets insets = self.collectionView.contentInset;
        insets.top = 20;
        self.collectionView.contentInset =insets;
        self.collectionView.scrollIndicatorInsets = insets;
     }
     self.view.backgroundColor = [UIColor whiteColor];
-    //[self.view addSubview:self.titleLabel];
+
     [self.view addSubview:self.collectionView];
-  
-//    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-//       // make.left.mas_equalTo(self.view);
-//       // make.right.mas_equalTo(self.view);
-//        make.top.mas_equalTo(self.view).offset(100);
-//       // make.center.mas_equalTo(self.view);
-//        //make.bottom.mas_equalTo(self.view.mas_bottom).offset( IS_IPhoneXAll ? -103:-70);
-//    }];
-
-
+    [self.view addSubview:self.titleLabel];
+    [self.view addSubview:self.subtitleLabel];
+    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.view).offset(40);
+       // make.right.mas_equalTo(self.view);
+        make.top.mas_equalTo(self.view).offset(90);
+    }];
+    [self.subtitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.mas_equalTo(self.view).offset(40);
+        make.top.mas_equalTo(self.titleLabel).offset(45);
+    }];
 }
 
 -(UICollectionView *)collectionView
@@ -83,7 +88,8 @@
         layout.minimumLineSpacing = 10.0;
         layout.minimumInteritemSpacing = 0;
         layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
-        _collectionView = [[UICollectionView alloc] initWithFrame:self.view.bounds collectionViewLayout:layout];
+        CGRect toRect = CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y+180, self.view.bounds.size.width, self.view.bounds.size.height-160);
+        _collectionView = [[UICollectionView alloc] initWithFrame:toRect collectionViewLayout:layout];
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
         _collectionView.backgroundColor = [UIColor whiteColor];
@@ -106,7 +112,7 @@
 {
     CGFloat dim =(SCREEN_WIDTH)/2;
    // return CGSizeMake((SCREEN_WIDTH-2*dim)/3, 150);
-   return CGSizeMake(dim, 290);
+   return CGSizeMake(dim, 280);
 
 }
 
@@ -117,7 +123,7 @@
     NSDictionary *dic = self.dataArray[indexPath.row];
     cell.iconImageView.image = [UIImage imageNamed:dic[@"bigIcon"]];
     cell.sceneTitleLabel.text = dic[@"title"];
-    cell.playImageView.image=[UIImage imageNamed:@"play-scene"];
+    cell.playImageView.image=[UIImage imageNamed:@"miniplay"];
 
     return cell;
 }
@@ -158,13 +164,30 @@
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc] init];
         _titleLabel.textColor = [UIColor blackColor];
-        _titleLabel.font =  [UIFont fontWithName:@"DINAlternate-Bold" size:30];
+      //  _titleLabel.font =  [UIFont fontWithName:@"DINAlternate-Bold" size:25];
+        _titleLabel.font = [UIFont boldSystemFontOfSize:30];
         _titleLabel.textAlignment = NSTextAlignmentCenter;
         _titleLabel.text = @"场景";
         _titleLabel.userInteractionEnabled = NO;
+        _titleLabel.textColor = COLOR_WITH_HEX(0x000000);
     }
     return _titleLabel;
 }
+
+-(UILabel *)subtitleLabel
+{
+    if (!_subtitleLabel) {
+        _subtitleLabel = [[UILabel alloc] init];
+        _subtitleLabel.textColor = [UIColor grayColor];
+        _subtitleLabel.font = [UIFont boldSystemFontOfSize:25];
+        _subtitleLabel.textAlignment = NSTextAlignmentCenter;
+        _subtitleLabel.text = @"聆听声谷的声音。";
+        _subtitleLabel.textColor = COLOR_WITH_HEX(0xc3c3c3);
+        _subtitleLabel.userInteractionEnabled = NO;
+    }
+    return _subtitleLabel;
+}
+
 
 /*
 #pragma mark - Navigation

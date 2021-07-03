@@ -8,6 +8,9 @@
 
 #import "SceneListCollectionViewCell.h"
 
+#define COLOR_WITH_HEX(hexValue) [UIColor colorWithRed:((float)((hexValue & 0xFF0000) >> 16)) / 255.0 green:((float)((hexValue & 0xFF00) >> 8)) / 255.0 blue:((float)(hexValue & 0xFF)) / 255.0 alpha:1.0f]
+ 
+// 调用
 @implementation SceneListCollectionViewCell
 -(instancetype)initWithFrame:(CGRect)frame
 {
@@ -39,7 +42,7 @@
        // self.backgroundColor =[UIColor redColor];
         CGFloat scale = [UIScreen mainScreen].scale ;
         CGFloat dimNew=(SCREEN_WIDTH/2-28)/2;
-        _playImageView = [[UIImageView alloc] initWithFrame:CGRectMake(dimNew, 180,28, 28)];
+        _playImageView = [[UIImageView alloc] initWithFrame:CGRectMake(dimNew, 190,22, 22)];
         _playImageView.contentMode = UIViewContentModeScaleAspectFill;
         _playImageView.layer.masksToBounds = YES;
         _playImageView.layer.cornerRadius = 1;
@@ -51,12 +54,12 @@
 {
     if (!_sceneTitleLabel) {
         CGFloat dimNew=(SCREEN_WIDTH/2-118)/2;
-        _sceneTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(dimNew, 235, 118, 30)];
+        _sceneTitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(dimNew, 230, 118, 30)];
         _sceneTitleLabel.textAlignment = NSTextAlignmentCenter;
-       // _sceneTitleLabel.font = [UIFont systemFontOfSize:15];
-        _sceneTitleLabel.font = [UIFont fontWithName:@"DINAlternate-Bold" size:15];
+      _sceneTitleLabel.font = [UIFont systemFontOfSize:12];
+      //  _sceneTitleLabel.font = [UIFont fontWithName:@"DINAlternate-Bold" size:15];
      
-        _sceneTitleLabel.textColor = RGB(139, 139, 139, 1);
+        _sceneTitleLabel.textColor = COLOR_WITH_HEX(0x4f4f4f);
     }
     return _sceneTitleLabel;
 }

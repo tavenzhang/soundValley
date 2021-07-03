@@ -37,6 +37,7 @@
 @property (nonatomic, strong) NSURL *currentUrl;
 @property (nonatomic, strong) GuideView *guideView;
 @property (nonatomic, assign) CGFloat animationProgress;
+@property (nonatomic, strong) UILabel *titleLabel;
 @end
 
 @implementation SVHomeViewController
@@ -53,7 +54,7 @@
 
 -(void)setNav
 {
-    self.title = @"山谷";
+   // self.title = @"山谷";
    // [self setLeftNavBar:@"main_left"];
     [self setRightNavBar:@"main_right"];
 }
@@ -64,7 +65,7 @@
     self.animationProgress = 0.f;
     NSArray *array = [InitData getSceneListData];
     self.currentUrl = [NSURL fileURLWithPath:array[self.currentIndex][@"voice"]];
-    self.title = array[self.currentIndex][@"title"];
+    self.titleLabel.text = array[self.currentIndex][@"title"];
     self.currentSeconds = [[[NSUserDefaults standardUserDefaults] objectForKey:CURRENT_TIME] integerValue];
     self.lastSeconds = self.currentSeconds;
 }
@@ -86,8 +87,8 @@
                 weakSelf.currentIndex = i;
             }
         }
-    
-        weakSelf.title = [dic[@"title"] description];
+        weakSelf.titleLabel.text= [dic[@"title"] description];
+      //  weakSelf.title = [dic[@"title"] description];
         weakSelf.playButton.selected = NO;
         self.currentUrl = [NSURL fileURLWithPath:dic[@"voice"]];
         [weakSelf clickPlayButton];
@@ -119,6 +120,7 @@
      [self.view addSubview:self.timeLabel];
      [self.view addSubview:self.timeButton];
      [self.view addSubview:self.sceneButton];
+     [self.view addSubview:self.titleLabel];
 }
 
 -(void)may_layoutSubviews
@@ -159,6 +161,10 @@
         make.bottom.mas_equalTo(self.view.mas_bottom).offset( IS_IPhoneXAll ? -63:-30);
 
        // make.bottom.equalTo(self.view.mas_bottom).offset(IS_IPhoneXAll ?-63:-30);
+    }];
+    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.top.equalTo(self.view).offset(100);
+        make.centerX.equalTo(self.view).offset(0);
     }];
 }
 
@@ -397,7 +403,7 @@
         [_sceneButton setTitle:@"场景" forState:UIControlStateNormal];
         _sceneButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;//使图片和文字水平居中显示
         _sceneButton.imageEdgeInsets = UIEdgeInsetsMake(-_sceneButton.titleLabel.intrinsicContentSize.height, 0, 0, -_sceneButton.titleLabel.intrinsicContentSize.width);
-        _sceneButton.titleEdgeInsets = UIEdgeInsetsMake(_playButton.currentImage.size.height+20, -(_sceneButton.currentImage.size.width-20), 0, 0);
+        _sceneButton.titleEdgeInsets = UIEdgeInsetsMake(_playButton.currentImage.size.height+17, -(_sceneButton.currentImage.size.width-20), 0, 0);
         _sceneButton.titleLabel.font = [UIFont systemFontOfSize:10];
         [_sceneButton setTitleColor:[UIColor colorWithWhite:1 alpha:0.5] forState:UIControlStateNormal];
         [_sceneButton addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchUpInside];
@@ -417,7 +423,7 @@
         [_playButton setTitle:@"停止" forState:UIControlStateSelected];
        _playButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;//使图片和文字水平居中显示
         _playButton.imageEdgeInsets = UIEdgeInsetsMake(-_playButton.titleLabel.intrinsicContentSize.height, 0, 0, -_playButton.titleLabel.intrinsicContentSize.width);
-      _playButton.titleEdgeInsets = UIEdgeInsetsMake(_playButton.currentImage.size.height+20, -(_playButton.currentImage.size.width-20), 0, 0);
+      _playButton.titleEdgeInsets = UIEdgeInsetsMake(_playButton.currentImage.size.height+17, -(_playButton.currentImage.size.width-20), 0, 0);
         _playButton.titleLabel.font = [UIFont systemFontOfSize:10];
         [_playButton addTarget:self action:@selector(clickPlayButton) forControlEvents:UIControlEventTouchUpInside];
     }
@@ -474,7 +480,7 @@
         [_timeButton setTitle:@"定时" forState:UIControlStateNormal];
         _timeButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;//使图片和文字水平居中显示
         _timeButton.imageEdgeInsets = UIEdgeInsetsMake(-_timeButton.titleLabel.intrinsicContentSize.height, 0, 0, -_timeButton.titleLabel.intrinsicContentSize.width);
-        _timeButton.titleEdgeInsets = UIEdgeInsetsMake(_playButton.currentImage.size.height+20, -(_timeButton.currentImage.size.width-20), 0, 0);
+        _timeButton.titleEdgeInsets = UIEdgeInsetsMake(_playButton.currentImage.size.height+17, -(_timeButton.currentImage.size.width-20), 0, 0);
         _timeButton.titleLabel.font = [UIFont systemFontOfSize:10];
         [_timeButton setTitleColor:[UIColor colorWithWhite:1 alpha:0.5] forState:UIControlStateNormal];
         [_timeButton addTarget:self action:@selector(clickTimeButtonAction) forControlEvents:UIControlEventTouchUpInside];
@@ -489,6 +495,20 @@
         _privacyView = [[PrivacyView alloc] initWithFrame:self.view.bounds];
     }
     return _privacyView;
+}
+
+-(UILabel *)titleLabel
+{
+    if (!_titleLabel) {
+        _titleLabel = [[UILabel alloc] init];
+        _titleLabel.textColor = [UIColor blackColor];
+        _titleLabel.font = [UIFont boldSystemFontOfSize:20];
+        _titleLabel.textAlignment = NSTextAlignmentCenter;
+        _titleLabel.text = @"";
+        _titleLabel.userInteractionEnabled = NO;
+        _titleLabel.textColor = [UIColor whiteColor];
+    }
+    return _titleLabel;
 }
 /*
 #pragma mark - Navigation
