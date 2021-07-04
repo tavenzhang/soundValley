@@ -57,6 +57,7 @@
    // self.title = @"山谷";
    // [self setLeftNavBar:@"main_left"];
     [self setRightNavBar:@"main_right"];
+    [self monitorRecordVideo];
 }
 
 -(void)initData
@@ -173,6 +174,11 @@
 {
     self.playButton.selected = !self.playButton.selected;
     if (self.playButton.selected) {
+       if([self checkCaptured])
+       {
+           self.playButton.selected = !self.playButton.selected;
+           return;
+       }
         self.isStart = YES;
         // play audio
         [[SVPlayerManager sharedInstance] playMusicWithFilePath:self.currentUrl];
@@ -308,7 +314,8 @@
 {
     NSInteger index = scrollView.contentOffset.x / SCREEN_WIDTH;
     NSString *title = [NSString stringWithFormat:@"%@",[InitData getSceneListData][index][@"title"]];
-    self.title = title;
+    self.titleLabel.text = title;
+   // self.title = title;
     [self showChildVC:index];
 }
 
@@ -344,15 +351,17 @@
             {
                 [self playLoadView];
             }
-            [self destoryTimer];
-            // start Timer
-            [self startTimer];
-            self.isStart = YES;
-            [self startVolumChange];
-            [[SVPlayerManager sharedInstance] playMusicWithFilePath:[NSURL fileURLWithPath:path]];
-            dispatch_async(dispatch_get_main_queue(), ^{
-                self.playButton.selected = YES;
-            });
+            if(![self checkCaptured]){
+                [self destoryTimer];
+                // start Timer
+                [self startTimer];
+                self.isStart = YES;
+                [self startVolumChange];
+                [[SVPlayerManager sharedInstance] playMusicWithFilePath:[NSURL fileURLWithPath:path]];
+                dispatch_async(dispatch_get_main_queue(), ^{
+                    self.playButton.selected = YES;
+                });
+            }
         }else{
             self.isStart = NO;
             self.playButton.selected = NO;
@@ -405,7 +414,7 @@
         _sceneButton.imageEdgeInsets = UIEdgeInsetsMake(-_sceneButton.titleLabel.intrinsicContentSize.height, 0, 0, -_sceneButton.titleLabel.intrinsicContentSize.width);
         _sceneButton.titleEdgeInsets = UIEdgeInsetsMake(_playButton.currentImage.size.height+17, -(_sceneButton.currentImage.size.width-20), 0, 0);
         _sceneButton.titleLabel.font = [UIFont systemFontOfSize:10];
-        [_sceneButton setTitleColor:[UIColor colorWithWhite:1 alpha:0.5] forState:UIControlStateNormal];
+        [_sceneButton setTitleColor:[UIColor colorWithWhite:1 alpha:0.8] forState:UIControlStateNormal];
         [_sceneButton addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchUpInside];
     }
     return _sceneButton;
@@ -418,7 +427,7 @@
         _playButton = [UIButton buttonWithType:UIButtonTypeCustom];
         [_playButton setImage:[UIImage imageNamed:@"main_play"] forState:UIControlStateNormal];
         [_playButton setImage:[UIImage imageNamed:@"main_pause"] forState:UIControlStateSelected];
-        [_playButton setTitleColor:[UIColor colorWithWhite:1 alpha:0.5] forState:UIControlStateNormal];
+        [_playButton setTitleColor:[UIColor colorWithWhite:1 alpha:0.8] forState:UIControlStateNormal];
         [_playButton setTitle:@"播放" forState:UIControlStateNormal];
         [_playButton setTitle:@"停止" forState:UIControlStateSelected];
        _playButton.contentHorizontalAlignment = UIControlContentHorizontalAlignmentCenter;//使图片和文字水平居中显示
@@ -482,7 +491,7 @@
         _timeButton.imageEdgeInsets = UIEdgeInsetsMake(-_timeButton.titleLabel.intrinsicContentSize.height, 0, 0, -_timeButton.titleLabel.intrinsicContentSize.width);
         _timeButton.titleEdgeInsets = UIEdgeInsetsMake(_playButton.currentImage.size.height+17, -(_timeButton.currentImage.size.width-20), 0, 0);
         _timeButton.titleLabel.font = [UIFont systemFontOfSize:10];
-        [_timeButton setTitleColor:[UIColor colorWithWhite:1 alpha:0.5] forState:UIControlStateNormal];
+        [_timeButton setTitleColor:[UIColor colorWithWhite:1 alpha:0.8] forState:UIControlStateNormal];
         [_timeButton addTarget:self action:@selector(clickTimeButtonAction) forControlEvents:UIControlEventTouchUpInside];
         _timeButton.imageView.contentMode = UIViewContentModeScaleAspectFill;
     }
@@ -510,14 +519,67 @@
     }
     return _titleLabel;
 }
-/*
-#pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+#pragma mark - 监听录制
+/**
+ 监听屏幕录制
+ iOS 11.0 版本以上
+ */
+- (void)monitorRecordVideo {// 监听屏幕录制
+
+    // 监测设备的录制状态
+    if (@available(iOS 11.0, *)) {
+        [[NSNotificationCenter defaultCenter] addObserverForName:UIScreenCapturedDidChangeNotification object:nil queue:[NSOperationQueue mainQueue] usingBlock:^(NSNotification * _Nonnull note) {
+            NSLog(@"屏幕录制 ...");
+             
+            [self showPromptWarningView];
+        }];
+    } else {
+        // Fallback on earlier versions
+    }
 }
-*/
+/**
+ 提示视图
+ */
+- (void)showPromptWarningView {
+    [self checkCaptured];
+}
+
+
+/**
+ 提示视图
+ */
+- (BOOL)checkCaptured {
+    
+    [self.view addSubview:self.playButton];
+
+    UIScreen * sc = [UIScreen mainScreen];
+
+    if (@available(iOS 11.0, *)) {
+
+      if (sc.isCaptured) {
+          if(self.isStart)
+          {
+              [self clickPlayButton];
+          }
+          UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"友情提示"
+                                                              message:@"版权内容 请勿录制!"
+                                                             delegate:self
+                                                    cancelButtonTitle:nil
+                                                    otherButtonTitles:@"确定", nil];
+          [alertView show];
+          return  YES;
+      }
+     else
+        {
+            return  NO;
+        }
+
+    } else {
+        return  NO;
+      // Fallback on earlier versions
+
+    }
+}
 
 @end
