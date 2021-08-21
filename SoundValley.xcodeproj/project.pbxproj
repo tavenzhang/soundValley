@@ -887,7 +887,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = JC4D4QGWWG;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SoundValley/PrefixHeader.pch";
 				INFOPLIST_FILE = SoundValley/Info.plist;
@@ -914,7 +914,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 14;
+				CURRENT_PROJECT_VERSION = 16;
 				DEVELOPMENT_TEAM = JC4D4QGWWG;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SoundValley/PrefixHeader.pch";
 				INFOPLIST_FILE = SoundValley/Info.plist;
