@@ -73,7 +73,7 @@ static SVPlayerManager *_instance;
 - (void)setCustomVolume:(CGFloat)volume
 {
     self.streamer.volume = volume;
-    NSLog(@"---------%.2f", volume);
+//    NSLog(@"---------%.2f", volume);
 }
 
 - (void)pause

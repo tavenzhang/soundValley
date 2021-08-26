@@ -12,12 +12,11 @@
 @interface SceneListViewController ()<UICollectionViewDelegate,UICollectionViewDataSource>
 @property (nonatomic,strong)NSArray *dataArray;
 @property (nonatomic,strong)UICollectionView *collectionView;
+@property (nonatomic, strong) UIView *headerView;
 @property (nonatomic, strong) UILabel *titleLabel;
 @property (nonatomic, strong) UILabel *subtitleLabel;
 
 @end
-
-#define COLOR_WITH_HEX(hexValue) [UIColor colorWithRed:((float)((hexValue & 0xFF0000) >> 16)) / 255.0 green:((float)((hexValue & 0xFF00) >> 8)) / 255.0 blue:((float)(hexValue & 0xFF)) / 255.0 alpha:1.0f]
 
 @implementation SceneListViewController
 
@@ -66,19 +65,7 @@
        self.collectionView.scrollIndicatorInsets = insets;
     }
     self.view.backgroundColor = [UIColor whiteColor];
-
     [self.view addSubview:self.collectionView];
-    [self.view addSubview:self.titleLabel];
-    [self.view addSubview:self.subtitleLabel];
-    [self.titleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.view).offset(40);
-       // make.right.mas_equalTo(self.view);
-        make.top.mas_equalTo(self.view).offset(90);
-    }];
-    [self.subtitleLabel mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.mas_equalTo(self.view).offset(40);
-        make.top.mas_equalTo(self.titleLabel).offset(45);
-    }];
 }
 
 -(UICollectionView *)collectionView
@@ -88,14 +75,34 @@
         layout.minimumLineSpacing = 10.0;
         layout.minimumInteritemSpacing = 0;
         layout.sectionInset = UIEdgeInsetsMake(0, 0, 0, 0);
-        CGRect toRect = CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y+180, self.view.bounds.size.width, self.view.bounds.size.height-160);
+        CGRect toRect = CGRectMake(self.view.bounds.origin.x, self.view.bounds.origin.y, self.view.bounds.size.width, self.view.bounds.size.height);
         _collectionView = [[UICollectionView alloc] initWithFrame:toRect collectionViewLayout:layout];
         _collectionView.dataSource = self;
         _collectionView.delegate = self;
         _collectionView.backgroundColor = [UIColor whiteColor];
+        [_collectionView registerClass:[UICollectionReusableView class] forSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"hotHeaderV"];
         [_collectionView registerClass:[SceneListCollectionViewCell class] forCellWithReuseIdentifier:@"SceneListCollectionViewCell"];
     }
     return _collectionView;
+}
+
+#pragma mark ================ collectionview头视图 ===============
+- (UICollectionReusableView *)collectionView:(UICollectionView *)collectionView viewForSupplementaryElementOfKind:(NSString *)kind atIndexPath:(NSIndexPath *)indexPath{
+        if ([kind isEqualToString:UICollectionElementKindSectionHeader]) {
+
+            UICollectionReusableView *header = [collectionView dequeueReusableSupplementaryViewOfKind:UICollectionElementKindSectionHeader withReuseIdentifier:@"hotHeaderV" forIndexPath:indexPath];
+
+            header.backgroundColor = [UIColor whiteColor];
+            [header addSubview:self.headerView];
+            return header;
+        }else{
+            return nil;
+        }
+}
+
+- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout referenceSizeForHeaderInSection:(NSInteger)section
+{
+    return CGSizeMake(SCREEN_WIDTH, 120);
 }
 
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section
@@ -162,11 +169,10 @@
 -(UILabel *)titleLabel
 {
     if (!_titleLabel) {
-        _titleLabel = [[UILabel alloc] init];
-        _titleLabel.textColor = [UIColor blackColor];
+        _titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(40, 0, 200, 30)];
       //  _titleLabel.font =  [UIFont fontWithName:@"DINAlternate-Bold" size:25];
-        _titleLabel.font = [UIFont boldSystemFontOfSize:30];
-        _titleLabel.textAlignment = NSTextAlignmentCenter;
+        _titleLabel.font = [UIFont systemFontOfSize:25 weight:UIFontWeightMedium];
+        _titleLabel.textAlignment = NSTextAlignmentLeft;
         _titleLabel.text = @"场景";
         _titleLabel.userInteractionEnabled = NO;
         _titleLabel.textColor = COLOR_WITH_HEX(0x000000);
@@ -177,15 +183,25 @@
 -(UILabel *)subtitleLabel
 {
     if (!_subtitleLabel) {
-        _subtitleLabel = [[UILabel alloc] init];
+        _subtitleLabel = [[UILabel alloc] initWithFrame:CGRectMake(40, CGRectGetMaxY(self.titleLabel.frame)+20, 300, 30)];
         _subtitleLabel.textColor = [UIColor grayColor];
-        _subtitleLabel.font = [UIFont boldSystemFontOfSize:25];
-        _subtitleLabel.textAlignment = NSTextAlignmentCenter;
-        _subtitleLabel.text = @"聆听声谷的声音。";
+        _subtitleLabel.font = [UIFont systemFontOfSize:25 weight:UIFontWeightThin];
+        _subtitleLabel.textAlignment = NSTextAlignmentLeft;
+        _subtitleLabel.text = @"聆听山谷里的声音。";
         _subtitleLabel.textColor = COLOR_WITH_HEX(0xc3c3c3);
         _subtitleLabel.userInteractionEnabled = NO;
     }
     return _subtitleLabel;
+}
+
+-(UIView *)headerView
+{
+    if (!_headerView) {
+        _headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 120)];
+        [_headerView addSubview:self.titleLabel];
+        [_headerView addSubview:self.subtitleLabel];
+    }
+    return _headerView;
 }
 
 

@@ -58,7 +58,7 @@
     self.timeInterval ++;
     self.updateBlock();
 
-    NSLog(@"%f",self.timeInterval);
+//    NSLog(@"%f",self.timeInterval);
     if (self.timeInterval == self.timeSumInterval) {
         self.timeInterval = 0;
     }

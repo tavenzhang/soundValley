@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1813B9CD26AD438900919C34 /* StoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1813B9CC26AD438900919C34 /* StoryViewController.m */; };
 		18493C30245BC77000690E92 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 18493C2F245BC77000690E92 /* AppDelegate.m */; };
 		18493C39245BC77000690E92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 18493C37245BC77000690E92 /* Main.storyboard */; };
 		18493C3B245BC77400690E92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 18493C3A245BC77400690E92 /* Assets.xcassets */; };
@@ -75,6 +76,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1813B9CB26AD438900919C34 /* StoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StoryViewController.h; sourceTree = "<group>"; };
+		1813B9CC26AD438900919C34 /* StoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = StoryViewController.m; sourceTree = "<group>"; };
 		18493C2B245BC77000690E92 /* SoundValley.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SoundValley.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		18493C2E245BC77000690E92 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		18493C2F245BC77000690E92 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -297,6 +300,8 @@
 				18493C88245EC0A500690E92 /* ShareViewController.m */,
 				185822CF246B8A1D00974FA4 /* SVHomeViewController.h */,
 				185822D0246B8A1D00974FA4 /* SVHomeViewController.m */,
+				1813B9CB26AD438900919C34 /* StoryViewController.h */,
+				1813B9CC26AD438900919C34 /* StoryViewController.m */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -703,6 +708,7 @@
 				185822E0246E612000974FA4 /* PrivacyView.m in Sources */,
 				189E84912463FD0800D1A332 /* Tools.m in Sources */,
 				189E848E24619D9700D1A332 /* AudioPlayerTool.m in Sources */,
+				1813B9CD26AD438900919C34 /* StoryViewController.m in Sources */,
 				189E8483246071D900D1A332 /* KJBannerTool.m in Sources */,
 				9567436A265D1C4E00A547E0 /* UILabel+YHBaseChangeDefaultFont.m in Sources */,
 				18493C72245BDC3400690E92 /* SVViewController.m in Sources */,
@@ -887,7 +893,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = JC4D4QGWWG;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SoundValley/PrefixHeader.pch";
 				INFOPLIST_FILE = SoundValley/Info.plist;
@@ -897,7 +903,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				MARKETING_VERSION = 1.0.6;
+				MARKETING_VERSION = 2.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SoundValley.goodsound;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -914,7 +920,7 @@
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_TEAM = JC4D4QGWWG;
 				GCC_PREFIX_HEADER = "$(SRCROOT)/SoundValley/PrefixHeader.pch";
 				INFOPLIST_FILE = SoundValley/Info.plist;
@@ -924,7 +930,7 @@
 					"@executable_path/Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
-				MARKETING_VERSION = 1.0.6;
+				MARKETING_VERSION = 2.1.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.SoundValley.goodsound;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";

@@ -40,9 +40,9 @@
 {
     if (!_playImageView) {
        // self.backgroundColor =[UIColor redColor];
-        CGFloat scale = [UIScreen mainScreen].scale ;
-        CGFloat dimNew=(SCREEN_WIDTH/2-28)/2;
-        _playImageView = [[UIImageView alloc] initWithFrame:CGRectMake(dimNew, 190,22, 22)];
+        CGFloat scale = [UIScreen mainScreen].scale;
+        CGFloat dimNew=(SCREEN_WIDTH/2-10)/2;
+        _playImageView = [[UIImageView alloc] initWithFrame:CGRectMake(dimNew, 200,10, 10)];
         _playImageView.contentMode = UIViewContentModeScaleAspectFill;
         _playImageView.layer.masksToBounds = YES;
         _playImageView.layer.cornerRadius = 1;

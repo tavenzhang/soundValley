@@ -18,6 +18,7 @@
 #import "PrivacyView.h"
 #import "WebViewViewController.h"
 #import "GuideView.h"
+#import "StoryViewController.h"
 @interface SVHomeViewController ()<UIScrollViewDelegate>
 @property (nonatomic, strong) CADisplayLink *displayLink;
 @property (nonatomic, assign) CGFloat valumsSeconds;
@@ -55,7 +56,7 @@
 -(void)setNav
 {
    // self.title = @"山谷";
-   // [self setLeftNavBar:@"main_left"];
+    [self setLeftNavBar:@"main_story"];
     [self setRightNavBar:@"main_right"];
     [self monitorRecordVideo];
 }
@@ -72,6 +73,13 @@
 }
 
 -(void)backClick
+{
+    StoryViewController *vc = [[StoryViewController alloc] init];
+    vc.hidesBottomBarWhenPushed = YES;
+    [self.navigationController pushViewController:vc animated:YES];
+}
+
+-(void)sceneButtonClick
 {
     SceneListViewController *vc = [[SceneListViewController alloc] init];
     __weak typeof(self) weakSelf = self;
@@ -129,7 +137,7 @@
     [self.loadingView mas_makeConstraints:^(MASConstraintMaker *make) {
          make.centerY.equalTo(self.view).offset(-30);
          make.centerX.equalTo(self.view);
-         make.height.width.mas_equalTo(ScaleFit(300));
+         make.height.width.mas_equalTo(ScaleFit(270));
      }];
     [self.playButton mas_makeConstraints:^(MASConstraintMaker *make) {
      //   make.size.mas_equalTo(CGSizeMake(ScaleFit(60), ScaleFit(60)));
@@ -137,7 +145,7 @@
 //        make.right.mas_equalTo(self.view);
         make.centerX.equalTo(self.view);
        // make.center.mas_equalTo(self.loadingView);
-        make.bottom.mas_equalTo(self.view.mas_bottom).offset( IS_IPhoneXAll ? -63:-30);
+        make.bottom.mas_equalTo(self.view.mas_bottom).offset( IS_IPhoneXAll ? -64:-30);
     }];
     [self.timeLabel mas_makeConstraints:^(MASConstraintMaker *make) {
        // make.left.mas_equalTo(self.view);
@@ -150,16 +158,16 @@
        // make.size.mas_equalTo(CGSizeMake(ScaleFit(60), ScaleFit(60)));
       //  make.size.mas_equalTo(CGSizeMake(ScaleFit(60), ScaleFit(60)));
 
-        make.centerX.equalTo(self.view).offset(80);
-        make.bottom.mas_equalTo(self.view.mas_bottom).offset( IS_IPhoneXAll ? -63:-30);
+        make.centerX.equalTo(self.view).offset(SCREEN_WIDTH/3-10);
+        make.bottom.mas_equalTo(self.view.mas_bottom).offset( IS_IPhoneXAll ? -64:-30);
 
        // make.bottom.equalTo(self.view.mas_bottom).offset(IS_IPhoneXAll ?-63:-30);
     }];
     [self.sceneButton mas_makeConstraints:^(MASConstraintMaker *make) {
       //  make.size.mas_equalTo(CGSizeMake(ScaleFit(60), ScaleFit(60)));
        // make.size.mas_equalTo(CGSizeMake(ScaleFit(60), ScaleFit(60)));
-        make.centerX.equalTo(self.view).offset(-80);
-        make.bottom.mas_equalTo(self.view.mas_bottom).offset( IS_IPhoneXAll ? -63:-30);
+        make.centerX.equalTo(self.view).offset(-SCREEN_WIDTH/3+10);
+        make.bottom.mas_equalTo(self.view.mas_bottom).offset( IS_IPhoneXAll ? -64:-30);
 
        // make.bottom.equalTo(self.view.mas_bottom).offset(IS_IPhoneXAll ?-63:-30);
     }];
@@ -292,11 +300,11 @@
     if ([[NSUserDefaults standardUserDefaults] boolForKey:IS_AGREE] == NO) {
         WEAKSELF;
         if (!isFirstLaunch) {
-            GuideView *guideView = [[GuideView alloc] initWithFrame:self.view.bounds];
-            guideView.guideActionBlock = ^{
-                [weakSelf.view addSubview:weakSelf.privacyView];
-            };
-            [guideView showGuideView];
+//            GuideView *guideView = [[GuideView alloc] initWithFrame:self.view.bounds];
+//            guideView.guideActionBlock = ^{
+//                [weakSelf.view addSubview:weakSelf.privacyView];
+//            };
+//            [guideView showGuideView];
         }else{
             [self.view addSubview:self.privacyView];
         }
@@ -415,7 +423,7 @@
         _sceneButton.titleEdgeInsets = UIEdgeInsetsMake(_playButton.currentImage.size.height+17, -(_sceneButton.currentImage.size.width-20), 0, 0);
         _sceneButton.titleLabel.font = [UIFont systemFontOfSize:10];
         [_sceneButton setTitleColor:[UIColor colorWithWhite:1 alpha:0.8] forState:UIControlStateNormal];
-        [_sceneButton addTarget:self action:@selector(backClick) forControlEvents:UIControlEventTouchUpInside];
+        [_sceneButton addTarget:self action:@selector(sceneButtonClick) forControlEvents:UIControlEventTouchUpInside];
     }
     return _sceneButton;
 }
@@ -511,7 +519,7 @@
     if (!_titleLabel) {
         _titleLabel = [[UILabel alloc] init];
         _titleLabel.textColor = [UIColor blackColor];
-        _titleLabel.font = [UIFont boldSystemFontOfSize:20];
+        _titleLabel.font = [UIFont systemFontOfSize:18];
         _titleLabel.textAlignment = NSTextAlignmentCenter;
         _titleLabel.text = @"";
         _titleLabel.userInteractionEnabled = NO;
